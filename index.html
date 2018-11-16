@@ -38,6 +38,15 @@
             box-sizing: border-box;
         }
 
+        p.name {
+            font-size: 20px
+        }
+
+        p.details {
+            font-size: 30px;
+            line-height: 35px;
+        }
+
         .header-link,
         a {
             text-decoration: none;
@@ -147,6 +156,15 @@
             .project {
                 width: 45%;
             }
+            
+            p.name {
+                font-size: 28px
+            }
+
+            p.details {
+                font-size: 35px;
+                line-height: 40px;
+            }
 
             .page {
                 padding: 30px;
@@ -158,12 +176,12 @@
 <body>
     <div class="page">
         <div class="content">
-            <div>
-                <p style="font-size: 28px">
+            <div class="intro">
+                <p class="name">
                     Hi, I am <strong>Mustapha Babajide Adubiagbe</strong>
                     and I'd call myself a full stack developer.
                 </p>
-                <p style="font-size: 35px; line-height: 40px;">
+                <p class="details">
                     I do both back end and front end engineering. I do backend with <strong>PHP</strong> and <strong>Python</strong>
                     and code front end with <strong>HTML</strong>, <strong>CSS</strong> and <strong>Javascript</strong>.
                     As far as
@@ -172,6 +190,7 @@
                     Django sometimes.
                 </p>
             </div>
+
             <div class="heading">Projects</div>
 
             <div class="projects">
