@@ -34,6 +34,10 @@ p.details {
   line-height: 20px;
 }
 
+p.details:not(:first-child) {
+  text-decoration: line-through;
+}
+
 .header-link,
 a {
   text-decoration: none;
