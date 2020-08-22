@@ -1,0 +1,159 @@
+.page,
+.project {
+  width: 100%;
+  display: inline-block;
+}
+
+.page,
+.project,
+.project-name {
+  display: inline-block;
+}
+
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.page {
+  background-color: #ffffff;
+  font-size: 18px;
+  color: #000000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+p.name {
+  font-size: 30px;
+}
+
+p.details {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.header-link,
+a {
+  text-decoration: none;
+  color: #4374cc;
+  position: relative;
+  border-bottom: none;
+  transition: 0.2 ease-out;
+}
+
+.header-link:hover,
+a:hover {
+  color: #9e9e9e;
+}
+
+.header-link::after {
+  content: '--';
+  font-size: 50px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: #ff5722;
+}
+
+.static-text {
+  font-size: 20px;
+  margin-top: 50px;
+  line-height: 2;
+}
+
+a {
+  border-bottom: 3px solid #000000;
+}
+
+.header-link:hover {
+  border: none;
+}
+
+.heading {
+  display: block;
+  padding-top: 60px;
+  font-size: 25px;
+}
+
+.project {
+  margin: 50px 20px 5px 0;
+  vertical-align: top;
+  text-align: left;
+}
+
+.project-name {
+  font-size: 25px;
+  color: #6394ec;
+  height: 40px;
+  border-bottom: 3px solid transparent;
+}
+
+.project-name::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-image: url('assets/svgs/link.svg');
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.github-link {
+  font-size: 15px;
+  color: #767676;
+  height: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+}
+
+.github-link::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-image: url('assets/svgs/github.svg');
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.project-desc {
+  display: block;
+  line-height: 1.4;
+}
+
+.content {
+  z-index: 1;
+  position: relative;
+}
+
+li {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .project {
+    width: 45%;
+  }
+
+  p.name {
+    font-size: 35px;
+  }
+
+  p.details {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .page {
+    padding: 30px;
+  }
+}
