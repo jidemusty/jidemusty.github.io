@@ -14,12 +14,32 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-size: 0.875rem;
+  /* font-size: 0.875rem; */
 
   background-image: url(/assets/images/noise-a.png);
   background-color: #faf5e9;
   background-position: 0 0;
   background-size: 50px;
+}
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex; 
+  padding: 0 1.5rem;
+  flex-direction: column; 
+  gap: 3rem; 
+  min-height: 100vh; 
+  max-width: 46rem;
+
+  @media (min-width: 768px) { 
+    padding-bottom: 2rem; 
+  }
+
+  @media (min-width: 1024px) {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem; 
+  }
 }
 
 .page,
@@ -35,19 +55,15 @@ body {
 }
 
 .page {
-  /* background-color: #ffffff; */
-  /* font-size: 18px; */
   color: #000000;
-  padding: 20px;
   box-sizing: border-box;
 }
 
 p.name {
-  /* font-size: 30px; */
+  color: #F76F54;
 }
 
 p.details {
-  /* font-size: 18px; */
   line-height: 20px;
 }
 
@@ -71,7 +87,6 @@ a:hover {
 
 .header-link::after {
   content: '--';
-  /* font-size: 50px; */
   position: absolute;
   left: 0;
   right: 0;
@@ -94,8 +109,6 @@ a {
 
 .heading {
   display: block;
-  padding-top: 60px;
-  /* font-size: 25px; */
 }
 
 .project {
@@ -105,7 +118,6 @@ a {
 }
 
 .project-name {
-  /* font-size: 25px; */
   color: #6394ec;
   height: 40px;
   border-bottom: 3px solid transparent;
@@ -121,7 +133,6 @@ a {
 }
 
 .github-link {
-  /* font-size: 15px; */
   color: #767676;
   height: 20px;
   cursor: pointer;
@@ -165,16 +176,7 @@ ul {
     width: 45%;
   }
 
-  p.name {
-    /* font-size: 25px; */
-  }
-
   p.details {
-    /* font-size: 18px; */
     line-height: 20px;
-  }
-
-  .page {
-    padding: 30px;
   }
 }
