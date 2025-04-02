@@ -21,7 +21,6 @@ body {
   background-color: #faf5e9;
   background-position: 0 0;
   background-size: 50px;
-  overflow: hidden;
 }
 
 body {
@@ -74,6 +73,12 @@ section {
 }
 
 section h2 {
+  font-weight: 500;
+  font-size: inherit;
+  color: hsl(0, 0%, 50%, 0.5); 
+}
+
+.text-muted {
   font-weight: 500;
   font-size: inherit;
   color: hsl(0, 0%, 50%, 0.5); 
@@ -163,6 +168,10 @@ section.content {
   font-size: 1.8em;
 }
 
+p.details {
+  line-height: 1.5rem;
+}
+
 .prose li {
   margin: 0;
   position: relative;
@@ -174,6 +183,7 @@ section.content {
   right: 100%;
   top: 0.25rem;
   color: #6c757d;
+  margin-right: 0.3rem;
 }
 
 .link-span {
