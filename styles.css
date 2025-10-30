@@ -14,7 +14,8 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-feature-settings: "liga", "calt", "dlig", "ss07", "ss08", "zero", "tnum", "cv03", "cv04", "cv01", "cv09", "cv02";
+  font-feature-settings: "liga", "calt", "dlig", "ss07", "ss08", "zero", "tnum",
+    "cv03", "cv04", "cv01", "cv09", "cv02";
   /* font-size: 0.875rem; */
 
   background-image: url(/assets/images/noise-a.png);
@@ -26,21 +27,31 @@ body {
 body {
   margin-left: auto;
   margin-right: auto;
-  display: flex; 
+  display: flex;
   padding: 0 1.5rem;
-  flex-direction: column; 
-  gap: 3rem; 
-  min-height: 100vh; 
+  flex-direction: column;
+  gap: 3rem;
+  min-height: 100vh;
   max-width: 46rem;
 
-  @media (min-width: 768px) { 
-    padding-bottom: 2rem; 
+  @media (min-width: 768px) {
+    padding-bottom: 2rem;
   }
 
   @media (min-width: 1024px) {
     padding-top: 1.5rem;
-    padding-bottom: 2rem; 
+    padding-bottom: 2rem;
   }
+}
+
+.small-links {
+  font-size: 11px;
+  color: black;
+  text-decoration: underline;
+}
+
+.small-links:hover {
+  text-decoration: underline wavy #f76f54;
 }
 
 .intro {
@@ -48,23 +59,23 @@ body {
 }
 
 #name {
-  color: #F76F54;
+  color: #f76f54;
   font-weight: 500;
   text-decoration: none;
 }
 
 #name:hover {
-  text-decoration: underline wavy #F76F54;
+  text-decoration: underline wavy #f76f54;
 }
 
 section {
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 
-  @media (min-width: 768px) { 
-    gap: 0.75rem; 
+  @media (min-width: 768px) {
+    gap: 0.75rem;
   }
 }
 
@@ -75,13 +86,13 @@ section {
 section h2 {
   font-weight: 500;
   font-size: inherit;
-  color: hsl(0, 0%, 50%, 0.5); 
+  color: hsl(0, 0%, 50%, 0.5);
 }
 
 .text-muted {
   font-weight: 500;
   font-size: inherit;
-  color: hsl(0, 0%, 50%, 0.5); 
+  color: hsl(0, 0%, 50%, 0.5);
 }
 
 section.content {
@@ -89,10 +100,10 @@ section.content {
   max-width: none;
 
   color: hsl(0 0% 9% / 1);
-  
+
   font-size: 1rem;
   line-height: 1.75;
-  letter-spacing: 0; 
+  letter-spacing: 0;
 }
 
 .content.prose ul li {
@@ -123,7 +134,7 @@ section.content {
 .prose a {
   font-weight: normal;
   text-decoration: none;
-  color: #F76F54;
+  color: #f76f54;
 }
 
 .prose a:hover {
