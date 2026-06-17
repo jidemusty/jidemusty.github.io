@@ -1,263 +1,1264 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 81.25%">
+<html lang="en">
   <head>
     <title>Mustapha Babajide</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FFFFFF" />
-    <meta name="description" content="Mustapha Babajide Portfolio" />
-    <meta name="Keywords" content="Mustapha Babajide Adubiagbe", Portfolio,
-    Full-stack Developer, Software Engineer, Developer, United States" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="contact.css" />
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,900;1,14..32,300&family=Geist+Mono:wght@400;500&family=Lora:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- open graph -->
-    <meta property="og:site_name" content="jidemusty.github.io/" />
-    <meta property="og:title" content="Mustapha Babajide Portfolio" />
-    <meta
-      property="og:description"
-      content="I’m a Software Engineer based in the United States."
-    />
-    <meta
-      property="og:image"
-      itemprop="image"
-      content="assets/images/logo.jpg"
-    />
-    <meta property="og:type" content="website" />
+      /* ═══════════════════════════════════════════════════════════════
+         SHARED / BASE STYLES
+         ═══════════════════════════════════════════════════════════════ */
 
-    <!-- twitter card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@jide_mustapha" />
-    <meta name="twitter:creator" content="@jide_mustapha" />
-    <meta name="twitter:title" content="jidemusty.github.io" />
-    <meta
-      name="twitter:description"
-      content="I’m a Software Engineer based in the United States."
-    />
-    <meta name="twitter:image" content="assets/images/logo.jpg" />
-    <meta name="twitter:app:country" content="US" />
+      html, body {
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { transition: color 0.15s, border-color 0.15s; }
+
+      /* ═══════════════════════════════════════════════════════════════
+         VARIANT SWITCHER (Header)
+         ═══════════════════════════════════════════════════════════════ */
+
+      .variant-switcher {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #d6d0c4;
+        border-radius: 100px;
+        padding: 0.4rem;
+        display: flex;
+        gap: 0.2rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .variant-btn {
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.35rem 0.75rem;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 100px;
+        color: #999;
+        transition: all 0.2s;
+      }
+
+      .variant-btn.active {
+        background: #f9f4ef;
+        color: #020826;
+      }
+
+      .variant-btn:hover {
+        color: #020826;
+      }
+
+      .variant-select {
+        display: none;
+        font-family: "Inter", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.35rem 2rem 0.35rem 0.8rem;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: #020826;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.6rem center;
+        outline: none;
+        min-width: 7rem;
+      }
+
+      .variant-select-label {
+        display: none;
+        font-family: "Inter", sans-serif;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #aaa;
+        padding-left: 0.5rem;
+        align-self: center;
+      }
+
+      @media (max-width: 600px) {
+        .variant-switcher {
+          bottom: 1rem;
+          right: 1rem;
+        }
+        .variant-btn {
+          display: none;
+        }
+        .variant-select {
+          display: block;
+        }
+        .variant-select-label {
+          display: block;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════════════════
+         VARIANT: TERMINAL (Dark, monospace, CLI personality)
+         ═══════════════════════════════════════════════════════════════ */
+
+      body.variant-terminal {
+        --bg: #0e0e0e;
+        --bg-raised: #161616;
+        --border: #2a2a2a;
+        --text: #d4d4d4;
+        --text-muted: #555;
+        --accent: #f76f54;
+        --green: #4ec9b0;
+        --yellow: #dcdcaa;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Geist Mono", monospace;
+        font-size: 13.5px;
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+
+      body.variant-terminal .header {
+        margin-bottom: 3.5rem;
+      }
+
+      body.variant-terminal .header .prompt {
+        color: var(--text-muted);
+        font-size: 12px;
+        margin-bottom: 0.4rem;
+        user-select: none;
+      }
+
+      body.variant-terminal .header .prompt span.path {
+        color: var(--green);
+      }
+
+      body.variant-terminal .header .prompt span.git {
+        color: var(--accent);
+      }
+
+      body.variant-terminal .name {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.02em;
+        text-decoration: none;
+        display: block;
+      }
+
+      body.variant-terminal .name:hover { color: var(--accent); }
+
+      body.variant-terminal .tagline {
+        color: var(--text-muted);
+        font-size: 12px;
+        margin-top: 0.3rem;
+      }
+
+      body.variant-terminal .section-label {
+        color: var(--text-muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      body.variant-terminal .section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      body.variant-terminal section {
+        margin-bottom: 2.8rem;
+      }
+
+      body.variant-terminal .about-text {
+        color: var(--text);
+        font-size: 13.5px;
+        max-width: 52ch;
+      }
+
+      body.variant-terminal .about-text p + p {
+        margin-top: 0.8rem;
+      }
+
+      body.variant-terminal .about-text .highlight {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      body.variant-terminal .project-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      body.variant-terminal .project-list li {
+        display: grid;
+        grid-template-columns: 1.2rem 1fr auto;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 4px;
+        transition: background 0.15s;
+      }
+
+      body.variant-terminal .project-list li:hover {
+        background: var(--bg-raised);
+      }
+
+      body.variant-terminal .project-list .arrow {
+        color: var(--text-muted);
+        font-size: 11px;
+        user-select: none;
+      }
+
+      body.variant-terminal .project-list .proj-name {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      body.variant-terminal .project-list .proj-name:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      body.variant-terminal .proj-meta {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      body.variant-terminal .proj-desc-inline {
+        color: var(--text-muted);
+        font-size: 11.5px;
+      }
+
+      body.variant-terminal .proj-github {
+        font-size: 10.5px;
+        color: var(--text-muted);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        padding: 0 0.4rem;
+        border-radius: 3px;
+        transition: border-color 0.15s, color 0.15s;
+      }
+
+      body.variant-terminal .proj-github:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      body.variant-terminal .link-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      body.variant-terminal .link-list li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.25rem 0;
+      }
+
+      body.variant-terminal .link-list a {
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      body.variant-terminal .link-list a .muted {
+        color: var(--text-muted);
+      }
+
+      body.variant-terminal .link-list a .handle {
+        color: var(--yellow);
+      }
+
+      body.variant-terminal .link-list a:hover .handle {
+        color: var(--accent);
+      }
+
+      body.variant-terminal .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        background: var(--accent);
+        vertical-align: middle;
+        margin-left: 2px;
+        animation: blink 1.1s step-end infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      body.variant-terminal .footer {
+        margin-top: 4rem;
+        color: var(--text-muted);
+        font-size: 11px;
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      /* ═══════════════════════════════════════════════════════════════
+         VARIANT: PURE (Light, serif, prose-first)
+         ═══════════════════════════════════════════════════════════════ */
+
+      body.variant-pure {
+        --bg: #fffffe;
+        --text: #020826;
+        --muted: #8c7851;
+        --border: #e8e8e8;
+        --accent: #8c7851;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Lora", Georgia, serif;
+        font-size: 16px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+
+      body.variant-pure .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 5rem;
+      }
+
+      body.variant-pure .site-name {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      body.variant-pure .site-name:hover { color: var(--accent); }
+
+      body.variant-pure .nav {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      body.variant-pure .nav a {
+        font-family: "Inter", sans-serif;
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+
+      body.variant-pure .nav a:hover { color: var(--text); }
+
+      body.variant-pure .hero {
+        margin-bottom: 5rem;
+      }
+
+      body.variant-pure .hero p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text);
+        font-weight: 400;
+        max-width: 46ch;
+      }
+
+      body.variant-pure .hero p em {
+        font-style: italic;
+        color: var(--muted);
+      }
+
+      body.variant-pure section {
+        margin-bottom: 4rem;
+      }
+
+      body.variant-pure .section-title {
+        font-family: "Inter", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+
+      body.variant-pure .prose {
+        font-size: 1rem;
+        color: #333;
+        max-width: 50ch;
+      }
+
+      body.variant-pure .prose p + p { margin-top: 1rem; }
+
+      body.variant-pure .project-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body.variant-pure .project-list li {
+        border-top: 1px solid var(--border);
+        padding: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      body.variant-pure .project-list li:last-child {
+        border-bottom: 1px solid var(--border);
+      }
+
+      body.variant-pure .project-list .proj-left {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        flex: 1;
+        min-width: 0;
+      }
+
+      body.variant-pure .project-list .proj-name {
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      body.variant-pure .project-list .proj-name:hover { color: var(--accent); }
+
+      body.variant-pure .project-list .proj-desc {
+        font-family: "Inter", sans-serif;
+        font-size: 0.82rem;
+        color: var(--muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      body.variant-pure .project-list .proj-github {
+        font-family: "Inter", sans-serif;
+        font-size: 0.78rem;
+        color: var(--muted);
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      body.variant-pure .project-list .proj-github:hover { color: var(--accent); }
+
+      body.variant-pure .contact-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      body.variant-pure .contact-list a {
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: var(--text);
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.2rem;
+      }
+
+      body.variant-pure .contact-list a .muted { color: var(--muted); }
+
+      body.variant-pure .contact-list a:hover,
+      body.variant-pure .contact-list a:hover .muted { color: var(--accent); }
+
+      body.variant-pure footer {
+        margin-top: 6rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      /* ═══════════════════════════════════════════════════════════════
+         VARIANT: BOLD (Editorial, strong hierarchy, grid projects)
+         ═══════════════════════════════════════════════════════════════ */
+
+      body.variant-bold {
+        --bg: #f9f4ef;
+        --text: #020826;
+        --muted: #8c7851;
+        --border: #d6d0c4;
+        --accent: #8c7851;
+        --secondary: #f25042;
+        --tag-bg: #ede6d9;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+
+      body.variant-bold nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        border-bottom: 1.5px solid var(--text);
+        margin-bottom: 4rem;
+      }
+
+      body.variant-bold .nav-name {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      body.variant-bold .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      body.variant-bold .nav-links a {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--muted);
+        transition: color 0.1s;
+      }
+
+      body.variant-bold .nav-links a:hover { color: var(--text); }
+
+      body.variant-bold .hero {
+        margin-bottom: 5rem;
+        padding-bottom: 4rem;
+        border-bottom: 1.5px solid var(--text);
+      }
+
+      body.variant-bold .hero-label {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.7rem;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      body.variant-bold .hero-label::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      body.variant-bold .hero h1 {
+        font-size: clamp(2.8rem, 8vw, 5rem);
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        margin-bottom: 1.5rem;
+      }
+
+      body.variant-bold .hero h1 .accent-word {
+        color: var(--secondary);
+        font-style: italic;
+      }
+
+      body.variant-bold .hero-sub {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #444;
+        max-width: 46ch;
+        font-weight: 300;
+      }
+
+      body.variant-bold .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+      }
+
+      body.variant-bold .section-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      body.variant-bold .section-header h2 {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      body.variant-bold .section-header .count {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.65rem;
+        color: var(--secondary);
+        background: rgba(242, 80, 66, 0.12);
+        padding: 0.1rem 0.4rem;
+        border-radius: 3px;
+      }
+
+      body.variant-bold .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: #444;
+        font-weight: 300;
+      }
+
+      body.variant-bold .about-text p + p { margin-top: 0.75rem; }
+
+      body.variant-bold .about-text strong {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      body.variant-bold .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 1.2rem;
+      }
+
+      body.variant-bold .tag {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        background: var(--tag-bg);
+        border: 1px solid var(--border);
+        padding: 0.2rem 0.6rem;
+        border-radius: 2px;
+        color: #555;
+      }
+
+      body.variant-bold .projects-full { margin-bottom: 4rem; }
+
+      body.variant-bold .projects-grid {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+
+      body.variant-bold .projects-grid li {
+        padding: 1.25rem;
+        border: 1px solid var(--border);
+        margin: -1px 0 0 -1px;
+      }
+
+      body.variant-bold .projects-grid li:hover {
+        background: var(--tag-bg);
+        z-index: 1;
+        position: relative;
+      }
+
+      body.variant-bold .projects-grid .proj-name {
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      body.variant-bold .projects-grid .proj-name:hover {
+        color: var(--accent);
+      }
+
+      body.variant-bold .projects-grid .proj-desc {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 0.75rem;
+        font-weight: 300;
+      }
+
+      body.variant-bold .projects-grid .proj-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.75rem;
+      }
+
+      body.variant-bold .live-badge {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #2e9e5b;
+        background: rgba(46, 158, 91, 0.12);
+        padding: 0.1rem 0.4rem;
+        border-radius: 2px;
+      }
+
+      body.variant-bold .proj-link {
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      body.variant-bold .proj-link:hover { color: var(--accent); }
+
+      body.variant-bold .contact-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--text);
+        background: var(--tag-bg);
+        border: 1px solid var(--border);
+        padding: 0.35rem 0.75rem;
+        border-radius: 100px;
+        transition: border-color 0.15s, color 0.15s;
+      }
+
+      body.variant-bold .contact-chip:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      body.variant-bold .contact-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.5rem;
+      }
+
+      body.variant-bold footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1.5px solid var(--text);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      body.variant-bold footer .footer-name {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      body.variant-bold footer .footer-year {
+        font-family: "Geist Mono", monospace;
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+
+      /* ═══════════════════════════════════════════════════════════════
+         BODY LAYOUT (Shared across variants)
+         ═══════════════════════════════════════════════════════════════ */
+
+      body.variant-terminal,
+      body.variant-pure,
+      body.variant-bold {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+      }
+
+      body.variant-terminal {
+        max-width: 680px;
+        padding: 3rem 1.5rem 5rem;
+      }
+
+      body.variant-pure {
+        max-width: 560px;
+        padding: 6rem 1.5rem 8rem;
+      }
+
+      body.variant-bold {
+        max-width: 760px;
+        padding: 0 1.5rem 6rem;
+      }
+
+      /* ═══════════════════════════════════════════════════════════════
+         HIDDEN VARIANTS
+         ═══════════════════════════════════════════════════════════════ */
+
+      .variant-content { display: none; }
+      .variant-content.active { display: block; }
+
+      @media (max-width: 600px) {
+        body.variant-terminal { padding: 2rem 1rem 4rem; }
+        body.variant-pure { padding: 3rem 1.25rem 5rem; }
+        body.variant-bold { padding: 2rem 1.25rem 5rem; }
+
+        body.variant-bold .two-col { grid-template-columns: 1fr; gap: 2rem; }
+        body.variant-bold .projects-grid { grid-template-columns: 1fr; }
+        body.variant-pure .project-list .proj-desc { display: none; }
+      }
+    </style>
   </head>
+  <body class="variant-pure">
 
-  <body>
-    <div class="page">
-      <div class="content">
-        <div class="intro">
-          <a href="/" id="name">Mustapha Adubiagbe</a>
+    <!-- VARIANT SWITCHER -->
+    <div class="variant-switcher">
+      <button class="variant-btn active" data-variant="pure">Pure</button>
+      <button class="variant-btn" data-variant="terminal">Terminal</button>
+      <button class="variant-btn" data-variant="bold">Bold</button>
+      <label class="variant-select-label" for="variant-select-input">Design</label>
+      <select id="variant-select-input" class="variant-select" aria-label="Choose variant">
+        <option value="pure">Pure</option>
+        <option value="terminal">Terminal</option>
+        <option value="bold">Bold</option>
+      </select>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         VARIANT: PURE
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="variant-content active" data-variant="pure">
+      <div class="top">
+        <a href="/" class="site-name">Mustapha Adubiagbe</a>
+        <nav>
+          <ul class="nav">
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <p>
+          Software engineer at Microsoft. I build things for the internet,
+          from interfaces to infrastructure.
+        </p>
+      </div>
+
+      <section>
+        <p class="section-title">About</p>
+        <div class="prose">
+          <p>
+            I work at <span style="color:var(--text)">Microsoft</span>, building software that ships to a lot of people.
+            My work spans interfaces, infrastructure, and distributed systems.
+            I care about simplicity, not as an aesthetic, but as a discipline.
+          </p>
+          <p>
+            Outside of code, I read history, think about literature, and stay
+            curious about the ways technology reshapes how we live.
+          </p>
         </div>
+      </section>
 
-        <section>
-          <div class="title">
+      <section id="projects">
+        <p class="section-title">Projects</p>
+        <ul class="project-list">
+          <li>
+            <div class="proj-left">
+              <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
+              <span class="proj-desc">catalogue and share your links</span>
+            </div>
+            <a class="proj-github" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">github ↗</a>
+          <p class="tagline">Software Engineer <span class="at">@</span> Microsoft</p>
+          <li>
+            <div class="proj-left">
+              <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">pastebin</a>
+              <span class="proj-desc">minimalist, text-only pastebin</span>
+            </div>
+            <a class="proj-github" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">github ↗</a>
+          </li>
+          <li>
+            <div class="proj-left">
+              <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
+              <span class="proj-desc">an ORM, built from scratch</span>
+            </div>
+            <a class="proj-github" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">github ↗</a>
+          </li>
+          <li>
+            <div class="proj-left">
+              <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+              <span class="proj-desc">over-engineered</span>
+            </div>
+            <a class="proj-github" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">github ↗</a>
+          </li>
+          <li>
+            <div class="proj-left">
+              <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+              <span class="proj-desc">IMDB-like movies API in Go</span>
+            </div>
+            <a class="proj-github" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">github ↗</a>
+          </li>
+          <li>
+            <div class="proj-left">
+              <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
+            </div>
+            <a class="proj-github" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">github ↗</a>
+          </li>
+          <li>
+            <div class="proj-left">
+              <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+              <span class="proj-desc">dead simple note-taking app</span>
+            </div>
+            <a class="proj-github" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">github ↗</a>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <p class="section-title">Contact</p>
+        <ul class="contact-list">
+          <li><a href="https://github.com/jidemusty" target="_blank" rel="noopener"><span class="muted">github.com/</span>jidemusty</a></li>
+          <li><a href="https://www.linkedin.com/in/mustapha-adubiagbe" target="_blank" rel="noopener"><span class="muted">linkedin/</span>mustapha-adubiagbe</a></li>
+          <li><a href="mailto:adubiagbebm@gmail.com">adubiagbebm(at)gmail.com</a></li>
+        </ul>
+      </section>
+
+      <footer>
+        © 2024 Mustapha Adubiagbe
+      </footer>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         VARIANT: TERMINAL
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="variant-content" data-variant="terminal">
+      <header class="header">
+        <p class="prompt">
+          <span class="path">~/portfolio</span>
+          <span class="git"> (main)</span>
+          <span style="color: var(--text-muted);"> $</span>
+        </p>
+        <a href="/" class="name">Mustapha Adubiagbe<span class="cursor"></span></a>
+        <p class="tagline">Software Engineer <span class="at">@</span> Microsoft</p>
+      </header>
+
+      <section>
+        <div class="section-label">about</div>
+        <div class="about-text">
+          <p>I work at <span class="highlight">Microsoft</span>, building software that ships to a lot of people.
+            My work spans interfaces, infrastructure, and distributed systems.
+            I care about simplicity, not as an aesthetic, but as a discipline.</p>
+          <p>Outside of code, I read history, think about literature, and stay
+            curious about the ways technology reshapes how we live.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">projects</div>
+        <ul class="project-list">
+          <li>
+            <span class="arrow">▸</span>
+            <div class="proj-meta">
+              <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
+              <span class="proj-desc-inline">— catalogue and share your links</span>
+              <a class="proj-github" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">gh</a>
+            </div>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <div class="proj-meta">
+              <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">minimalist pastebin</a>
+              <span class="proj-desc-inline">— text sharing, stripped down</span>
+              <a class="proj-github" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">gh</a>
+            </div>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <div class="proj-meta">
+              <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
+              <span class="proj-desc-inline">— building an ORM from scratch</span>
+              <a class="proj-github" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">gh</a>
+            </div>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <div class="proj-meta">
+              <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+              <span class="proj-desc-inline">— over-engineered</span>
+              <a class="proj-github" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">gh</a>
+            </div>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <div class="proj-meta">
+              <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+              <span class="proj-desc-inline">— IMDB-like movies API in Go</span>
+              <a class="proj-github" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">gh</a>
+            </div>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <div class="proj-meta">
+              <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
+              <a class="proj-github" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">gh</a>
+            </div>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <div class="proj-meta">
+              <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+              <span class="proj-desc-inline">— dead simple note-taking</span>
+              <a class="proj-github" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">gh</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="section-label">contact</div>
+        <ul class="link-list">
+          <li>
+            <span class="arrow">▸</span>
+            <a href="https://github.com/jidemusty" target="_blank" rel="noopener">
+              <span class="muted">github.com/</span><span class="handle">jidemusty</span>
+            </a>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <a href="https://www.linkedin.com/in/mustapha-adubiagbe" target="_blank" rel="noopener">
+              <span class="muted">linkedin/</span><span class="handle">mustapha-adubiagbe</span>
+            </a>
+          </li>
+          <li>
+            <span class="arrow">▸</span>
+            <a href="mailto:adubiagbebm@gmail.com" rel="noopener">
+              <span class="handle">adubiagbebm(at)gmail.com</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <span>built by hand</span>
+        <span>·</span>
+        <span>2024</span>
+      </footer>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         VARIANT: BOLD
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="variant-content" data-variant="bold">
+      <nav>
+        <a href="/" class="nav-name">Mustapha Adubiagbe</a>
+        <ul class="nav-links">
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero">
+        <p class="hero-label">Software Engineer · Microsoft</p>
+        <h1>
+          I build things<br />
+          for the <span class="accent-word">internet.</span>
+        </h1>
+        <p class="hero-sub">
+          Full-stack engineer focused on infrastructure and distributed systems,
+          with a habit of caring deeply about the craft.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="about-section">
+          <div class="section-header">
             <h2>About</h2>
           </div>
-          <div class="content prose">
+          <div class="about-text">
             <p>
-              Software Engineer at Microsoft, I make things for the internet.
+              I work at <strong>Microsoft</strong>, building software that ships to a lot of people.
+              My work spans interfaces, infrastructure, and distributed systems.
+              I care about <strong>simplicity</strong>, not as an aesthetic, but as a discipline.
             </p>
-            <p class="details">
-              I enjoy solving problems, from building user interfaces to
-              optimizing algorithms. I'm passionate about technology,
-              competitive programming, and the intersection of minimalism and
-              simplicity in design. Beyond software, I’m deeply interested in
-              literature, history, art, and the broader impact of technology on
-              society.
+            <p>
+              Outside of code, I read history, think about literature, and stay
+              curious about the ways technology reshapes how we live.
             </p>
           </div>
-        </section>
-
-        <section>
-          <div class="title">
-            <h2>Some Projects</h2>
+          <div class="tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Go</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Systems</span>
+            <span class="tag">Minimalism</span>
           </div>
-          <div class="content prose">
-            <ul>
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://trove-app-f2f4.onrender.com/""
-                  target="_blank"
-                  rel="noopener"
-                  >trove: Catalogue and share your links.</a
-                >
-                <span class="link-span"></span>
-                <a
-                  class="small-links"
-                  style="color: black"
-                  href="https://github.com/jidemusty/trove-app"
-                  >(github)</a
-                >
-              </li>
+        </div>
 
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://frontend-production-b7985.up.railway.app"
-                  target="_blank"
-                  rel="noopener"
-                  >minimalist pastebin</a
-                >
-                <span class="link-span"></span>
-                <a
-                  class="small-links"
-                  style="color: black"
-                  href="https://github.com/jidemusty/pastr"
-                  >(github)</a
-                >
-              </li>
-
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://github.com/jidemusty/accio"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  accio: my attempt at building an ORM</a
-                >
-                <span class="link-span"></span>
-              </li>
-
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://focused-visvesvaraya-fea347.netlify.app"
-                  target="_blank"
-                  rel="noopener"
-                  >connect four, but over-engineered</a
-                >
-                <span class="link-span"></span>
-                <a
-                  class="small-links"
-                  style="color: black"
-                  href="https://github.com/jidemusty/ConnectFour"
-                  >(github)</a
-                >
-              </li>
-
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://github.com/jidemusty/greenlight"
-                  target="_blank"
-                  rel="noopener"
-                  >IMDB like movies API written in golang</a
-                >
-                <span class="link-span"></span>
-              </li>
-
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://distract-react.vercel.app/"
-                  target="_blank"
-                  rel="noopener"
-                  >Distract</a
-                >
-                <span class="link-span"></span>
-                <a
-                  class="small-links"
-                  style="color: black"
-                  href="https://github.com/jidemusty/distract-react"
-                  >(github)</a
-                >
-              </li>
-
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://github.com/jidemusty/war"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  war, a card game</a
-                >
-
-                <span class="link-span"></span>
-              </li>
-
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://notes-lovat-xi.vercel.app/"
-                  target="_blank"
-                  rel="noopener"
-                  >a dead simple note-taking app</a
-                >
-
-                <a
-                  class="small-links"
-                  style="color: black"
-                  href="https://github.com/jidemusty/notes"
-                  >(github)</a
-                >
-                <span class="link-span"></span>
-              </li>
-            </ul>
+        <div id="contact">
+          <div class="section-header">
+            <h2>Contact</h2>
           </div>
-        </section>
-
-        <section>
-          <div class="title">
-            <h2>Get in Touch</h2>
+          <div class="contact-chips">
+            <a class="contact-chip" href="https://github.com/jidemusty" target="_blank" rel="noopener">GitHub</a>
+            <a class="contact-chip" href="https://www.linkedin.com/in/mustapha-adubiagbe" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="contact-chip" href="https://medium.com/@Engr_Ejo" target="_blank" rel="noopener">Medium</a>
+            <a class="contact-chip" href="mailto:adubiagbebm@gmail.com">Email</a>
           </div>
-          <div class="content prose">
-            <ul>
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://twitter.com/_engrejo"
-                  rel="noopener"
-                  title="Link to my twitter account"
-                >
-                  <span class="text-muted">x.com/</span>jidemustapha
-                </a>
-              </li>
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://github.com/jidemusty"
-                  rel="noopener"
-                  title="Link to my github account"
-                >
-                  <span class="text-muted">github.com/</span>jidemusty
-                </a>
-              </li>
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://medium.com/@Engr_Ejo"
-                  rel="noopener"
-                  title="Link to my medium account"
-                >
-                  <span class="text-muted">medium(dot)</span>com
-                </a>
-              </li>
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="https://www.linkedin.com/in/mustapha-adubiagbe"
-                  rel="noopener"
-                  title="Link to my linkedin account"
-                >
-                  <span class="text-muted">linkedin/</span>mustapha-adubiagbe
-                </a>
-              </li>
-              <li>
-                <span class="projects-span">﹂</span>
-                <a
-                  href="mailto:jidemustapha2013@gmail.com"
-                  rel="noopener"
-                  title="Send me an email"
-                >
-                  <span class="text-muted">ambabajide(at)</span>gmail.com
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
+        </div>
       </div>
+
+      <div class="projects-full" id="projects">
+        <div class="section-header">
+          <h2>Projects</h2>
+          <span class="count">07</span>
+        </div>
+        <ul class="projects-grid">
+          <li>
+            <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
+            <p class="proj-desc">Catalogue and share your links.</p>
+            <div class="proj-footer">
+              <span class="live-badge">live</span>
+              <a class="proj-link" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">github ↗</a>
+            </div>
+          </li>
+          <li>
+            <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">minimalist pastebin</a>
+            <p class="proj-desc">Text sharing, stripped to the bone.</p>
+            <div class="proj-footer">
+              <span class="live-badge">live</span>
+              <a class="proj-link" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">github ↗</a>
+            </div>
+          </li>
+          <li>
+            <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
+            <p class="proj-desc">My attempt at building an ORM from scratch.</p>
+            <div class="proj-footer">
+              <span></span>
+              <a class="proj-link" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">github ↗</a>
+            </div>
+          </li>
+          <li>
+            <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+            <p class="proj-desc">A classic game, over-engineered.</p>
+            <div class="proj-footer">
+              <span class="live-badge">live</span>
+              <a class="proj-link" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">github ↗</a>
+            </div>
+          </li>
+          <li>
+            <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+            <p class="proj-desc">IMDB-like movies API written in Go.</p>
+            <div class="proj-footer">
+              <span></span>
+              <a class="proj-link" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">github ↗</a>
+            </div>
+          </li>
+          <li>
+            <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
+            <p class="proj-desc">—</p>
+            <div class="proj-footer">
+              <span class="live-badge">live</span>
+              <a class="proj-link" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">github ↗</a>
+            </div>
+          </li>
+          <li>
+            <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+            <p class="proj-desc">A dead simple note-taking app.</p>
+            <div class="proj-footer">
+              <span class="live-badge">live</span>
+              <a class="proj-link" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">github ↗</a>
+            </div>
+          </li>
+          <li style="background: transparent; pointer-events: none; border-color: transparent;"></li>
+        </ul>
+      </div>
+
+      <footer>
+        <span class="footer-name">Mustapha Adubiagbe</span>
+        <span class="footer-year">© 2024</span>
+      </footer>
     </div>
+
+    <script>
+      // Variant Switcher Logic
+      const variantBtns = document.querySelectorAll('.variant-btn');
+      const variantContents = document.querySelectorAll('.variant-content');
+      const variantSelect = document.querySelector('.variant-select');
+
+      // Load saved variant from localStorage or default to "pure"
+      const savedVariant = localStorage.getItem('portfolioVariant') || 'pure';
+      setVariant(savedVariant);
+
+      variantBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const variant = btn.getAttribute('data-variant');
+          setVariant(variant);
+          localStorage.setItem('portfolioVariant', variant);
+        });
+      });
+
+      variantSelect.addEventListener('change', () => {
+        const variant = variantSelect.value;
+        setVariant(variant);
+        localStorage.setItem('portfolioVariant', variant);
+      });
+
+      function setVariant(variant) {
+        const isKnownVariant = Array.from(variantContents).some(content => content.getAttribute('data-variant') === variant);
+        const resolvedVariant = isKnownVariant ? variant : 'pure';
+
+        // Update body class
+        document.body.className = `variant-${resolvedVariant}`;
+
+        // Update active variant content
+        variantContents.forEach(content => {
+          content.classList.remove('active');
+          if (content.getAttribute('data-variant') === resolvedVariant) {
+            content.classList.add('active');
+          }
+        });
+
+        // Update active button
+        variantBtns.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.getAttribute('data-variant') === resolvedVariant) {
+            btn.classList.add('active');
+          }
+        });
+
+        // Sync dropdown
+        variantSelect.value = resolvedVariant;
+      }
+    </script>
   </body>
 </html>
