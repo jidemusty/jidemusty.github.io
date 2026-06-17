@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mustapha Babajide — Terminal</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --bg: #0e0e0e;
+        --bg-raised: #161616;
+        --border: #2a2a2a;
+        --text: #d4d4d4;
+        --text-muted: #555;
+        --accent: #f76f54;
+        --green: #4ec9b0;
+        --yellow: #dcdcaa;
+      }
+
+      html, body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Geist Mono", "Fira Code", "Cascadia Code", monospace;
+        font-size: 13.5px;
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+
+      body {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 5rem;
+      }
+
+      /* ── header ── */
+      .header {
+        margin-bottom: 3.5rem;
+      }
+
+      .header .prompt {
+        color: var(--text-muted);
+        font-size: 12px;
+        margin-bottom: 0.4rem;
+        user-select: none;
+      }
+
+      .header .prompt span.path {
+        color: var(--green);
+      }
+
+      .header .prompt span.git {
+        color: var(--accent);
+      }
+
+      .name {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.02em;
+        text-decoration: none;
+        display: block;
+      }
+
+      .name:hover { color: var(--accent); }
+
+      .tagline {
+        color: var(--text-muted);
+        font-size: 12px;
+        margin-top: 0.3rem;
+      }
+
+      .tagline .at {
+        color: var(--accent);
+      }
+
+      /* ── section ── */
+      section {
+        margin-bottom: 2.8rem;
+      }
+
+      .section-label {
+        color: var(--text-muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      /* ── about ── */
+      .about-text {
+        color: var(--text);
+        font-size: 13.5px;
+        max-width: 52ch;
+      }
+
+      .about-text p + p {
+        margin-top: 0.8rem;
+      }
+
+      .about-text .highlight {
+        color: #fff;
+        font-weight: 500;
+      }
+
+      /* ── project list ── */
+      .project-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      .project-list li {
+        display: grid;
+        grid-template-columns: 1.2rem 1fr auto;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 4px;
+        transition: background 0.15s;
+      }
+
+      .project-list li:hover {
+        background: var(--bg-raised);
+      }
+
+      .project-list .arrow {
+        color: var(--text-muted);
+        font-size: 11px;
+        user-select: none;
+      }
+
+      .project-list .proj-name {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      .project-list .proj-name:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .project-list .proj-desc {
+        color: var(--text-muted);
+        font-size: 11.5px;
+        white-space: nowrap;
+      }
+
+      .proj-meta {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .proj-meta .proj-desc-inline {
+        color: var(--text-muted);
+        font-size: 11.5px;
+      }
+
+      .proj-github {
+        font-size: 10.5px;
+        color: var(--text-muted);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        padding: 0 0.4rem;
+        border-radius: 3px;
+        transition: border-color 0.15s, color 0.15s;
+      }
+
+      .proj-github:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* ── links ── */
+      .link-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .link-list li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.25rem 0;
+      }
+
+      .link-list .arrow {
+        color: var(--text-muted);
+        font-size: 11px;
+        user-select: none;
+      }
+
+      .link-list a {
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      .link-list a .muted {
+        color: var(--text-muted);
+      }
+
+      .link-list a .handle {
+        color: var(--yellow);
+      }
+
+      .link-list a:hover .handle {
+        color: var(--accent);
+      }
+
+      /* ── blink cursor ── */
+      .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        background: var(--accent);
+        vertical-align: middle;
+        margin-left: 2px;
+        animation: blink 1.1s step-end infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      /* ── footer ── */
+      .footer {
+        margin-top: 4rem;
+        color: var(--text-muted);
+        font-size: 11px;
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 600px) {
+        body { padding: 2rem 1rem 4rem; }
+        .project-list li {
+          grid-template-columns: 1.2rem 1fr;
+        }
+        .project-list .proj-desc { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="header">
+      <p class="prompt">
+        <span class="path">~/portfolio</span>
+        <span class="git"> (main)</span>
+        <span style="color: var(--text-muted)"> $</span>
+      </p>
+      <a href="/" class="name">mustapha adubiagbe<span class="cursor"></span></a>
+      <p class="tagline">Software Engineer <span class="at">@</span> Microsoft &nbsp;·&nbsp; New York</p>
+    </header>
+
+    <section>
+      <div class="section-label">about</div>
+      <div class="about-text">
+        <p>I make things for the internet. Currently at <span class="highlight">Microsoft</span>, building
+          software that ships to millions.</p>
+        <p>Interested in the intersection of minimalism and systems; from user interfaces to algorithms.
+          When I'm not writing code, I read history, think about language, and contemplate the long arc
+          of technology on society.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">projects</div>
+      <ul class="project-list">
+        <li>
+          <span class="arrow">▸</span>
+          <div class="proj-meta">
+            <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
+            <span class="proj-desc-inline">— catalogue and share your links</span>
+            <a class="proj-github" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">gh</a>
+          </div>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <div class="proj-meta">
+            <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">minimalist pastebin</a>
+            <span class="proj-desc-inline">— text sharing, stripped down</span>
+            <a class="proj-github" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">gh</a>
+          </div>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <div class="proj-meta">
+            <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
+            <span class="proj-desc-inline">— building an ORM from scratch</span>
+          </div>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <div class="proj-meta">
+            <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+            <span class="proj-desc-inline">— over-engineered</span>
+            <a class="proj-github" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">gh</a>
+          </div>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <div class="proj-meta">
+            <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+            <span class="proj-desc-inline">— IMDB-like movies API in Go</span>
+          </div>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <div class="proj-meta">
+            <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
+            <a class="proj-github" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">gh</a>
+          </div>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <div class="proj-meta">
+            <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+            <span class="proj-desc-inline">— dead simple note-taking</span>
+            <a class="proj-github" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">gh</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-label">contact</div>
+      <ul class="link-list">
+        <li>
+          <span class="arrow">▸</span>
+          <a href="https://twitter.com/_engrejo" rel="noopener">
+            <span class="muted">x.com/</span><span class="handle">jidemustapha</span>
+          </a>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <a href="https://github.com/jidemusty" rel="noopener">
+            <span class="muted">github.com/</span><span class="handle">jidemusty</span>
+          </a>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <a href="https://www.linkedin.com/in/mustapha-adubiagbe" rel="noopener">
+            <span class="muted">linkedin/</span><span class="handle">mustapha-adubiagbe</span>
+          </a>
+        </li>
+        <li>
+          <span class="arrow">▸</span>
+          <a href="mailto:jidemustapha2013@gmail.com" rel="noopener">
+            <span class="handle">ambabajide(at)gmail.com</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <span>built by hand</span>
+      <span>·</span>
+      <span>2024</span>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mustapha Babajide — Pure</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;1,14..32,300&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --bg: #ffffff;
+        --text: #111;
+        --muted: #999;
+        --border: #e8e8e8;
+        --accent: #f76f54;
+      }
+
+      html, body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Lora", Georgia, serif;
+        font-size: 16px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 6rem 1.5rem 8rem;
+      }
+
+      /* ── name / nav ── */
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 5rem;
+      }
+
+      .site-name {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      .site-name:hover { color: var(--accent); }
+
+      .nav {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      .nav a {
+        font-family: "Inter", sans-serif;
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+
+      .nav a:hover { color: var(--text); }
+
+      /* ── hero ── */
+      .hero {
+        margin-bottom: 5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--text);
+        font-weight: 400;
+        max-width: 46ch;
+      }
+
+      .hero p em {
+        font-style: italic;
+        color: var(--muted);
+      }
+
+      /* ── section ── */
+      section {
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-family: "Inter", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+
+      /* ── prose ── */
+      .prose {
+        font-size: 1rem;
+        color: #333;
+        max-width: 50ch;
+      }
+
+      .prose p + p { margin-top: 1rem; }
+
+      /* ── project list ── */
+      .project-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-list li {
+        border-top: 1px solid var(--border);
+        padding: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      .project-list li:last-child {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .project-list .proj-left {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .project-list .proj-name {
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .project-list .proj-name:hover { color: var(--accent); }
+
+      .project-list .proj-desc {
+        font-family: "Inter", sans-serif;
+        font-size: 0.82rem;
+        color: var(--muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .project-list .proj-github {
+        font-family: "Inter", sans-serif;
+        font-size: 0.78rem;
+        color: var(--muted);
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .project-list .proj-github:hover { color: var(--accent); }
+
+      /* ── contact ── */
+      .contact-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .contact-list a {
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: var(--text);
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.2rem;
+      }
+
+      .contact-list a .muted { color: var(--muted); }
+
+      .contact-list a:hover,
+      .contact-list a:hover .muted { color: var(--accent); }
+
+      /* ── footer ── */
+      footer {
+        margin-top: 6rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 600px) {
+        body { padding: 3rem 1.25rem 5rem; }
+        .top { margin-bottom: 3rem; }
+        .hero { margin-bottom: 3rem; }
+        .hero p { font-size: 1.05rem; }
+        .project-list .proj-desc { display: none; }
+        .nav { gap: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="top">
+      <a href="/" class="site-name">Mustapha Adubiagbe</a>
+      <nav>
+        <ul class="nav">
+          <li><a href="#projects">projects</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="hero">
+      <p>
+        Software engineer at Microsoft. I build things for the internet;
+        from interfaces to infrastructure. <em>Based in New York.</em>
+      </p>
+    </div>
+
+    <section>
+      <p class="section-title">About</p>
+      <div class="prose">
+        <p>
+          I enjoy the full surface of software: user interfaces, algorithms,
+          systems. I care about simplicity, not as an aesthetic, but as a
+          discipline.
+        </p>
+        <p>
+          Outside of code, I read history, think about literature, and stay
+          curious about the ways technology reshapes how we live.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-title">Projects</p>
+      <ul class="project-list">
+        <li>
+          <div class="proj-left">
+            <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
+            <span class="proj-desc">catalogue and share your links</span>
+          </div>
+          <a class="proj-github" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">github ↗</a>
+        </li>
+        <li>
+          <div class="proj-left">
+            <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">pastebin</a>
+            <span class="proj-desc">minimalist, text-only pastebin</span>
+          </div>
+          <a class="proj-github" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">github ↗</a>
+        </li>
+        <li>
+          <div class="proj-left">
+            <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
+            <span class="proj-desc">an ORM, built from scratch</span>
+          </div>
+          <a class="proj-github" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">github ↗</a>
+        </li>
+        <li>
+          <div class="proj-left">
+            <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+            <span class="proj-desc">over-engineered</span>
+          </div>
+          <a class="proj-github" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">github ↗</a>
+        </li>
+        <li>
+          <div class="proj-left">
+            <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+            <span class="proj-desc">IMDB-like movies API in Go</span>
+          </div>
+          <a class="proj-github" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">github ↗</a>
+        </li>
+        <li>
+          <div class="proj-left">
+            <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
+          </div>
+          <a class="proj-github" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">github ↗</a>
+        </li>
+        <li>
+          <div class="proj-left">
+            <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+            <span class="proj-desc">dead simple note-taking app</span>
+          </div>
+          <a class="proj-github" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">github ↗</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <p class="section-title">Contact</p>
+      <ul class="contact-list">
+        <li><a href="https://twitter.com/_engrejo" rel="noopener"><span class="muted">x.com/</span>jidemustapha</a></li>
+        <li><a href="https://github.com/jidemusty" rel="noopener"><span class="muted">github.com/</span>jidemusty</a></li>
+        <li><a href="https://www.linkedin.com/in/mustapha-adubiagbe" rel="noopener"><span class="muted">linkedin/</span>mustapha-adubiagbe</a></li>
+        <li><a href="mailto:jidemustapha2013@gmail.com">ambabajide(at)gmail.com</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      © 2024 Mustapha Adubiagbe
+    </footer>
+
+  </body>
+</html>

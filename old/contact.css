@@ -1,0 +1,10 @@
+#contact {
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.5rem;
+    font-weight: 400;
+
+    @media (min-width: 768px) { 
+        gap: 0.75rem; 
+    }
+}
