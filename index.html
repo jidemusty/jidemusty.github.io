@@ -1,27 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>Mustapha Babajide</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,900;1,14..32,300&family=Geist+Mono:wght@400;500&family=Lora:ital,wght@0,400;1,400&display=swap"
       rel="stylesheet"
     />
     <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
       /* ═══════════════════════════════════════════════════════════════
          SHARED / BASE STYLES
          ═══════════════════════════════════════════════════════════════ */
 
-      html, body {
+      html,
+      body {
         font-size: 16px;
         -webkit-font-smoothing: antialiased;
       }
 
-      a { transition: color 0.15s, border-color 0.15s; }
+      a {
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
 
       /* ═══════════════════════════════════════════════════════════════
          VARIANT SWITCHER (Header)
@@ -164,7 +176,9 @@
         display: block;
       }
 
-      body.variant-terminal .name:hover { color: var(--accent); }
+      body.variant-terminal .name:hover {
+        color: var(--accent);
+      }
 
       body.variant-terminal .tagline {
         color: var(--text-muted);
@@ -266,7 +280,9 @@
         border: 1px solid var(--border);
         padding: 0 0.4rem;
         border-radius: 3px;
-        transition: border-color 0.15s, color 0.15s;
+        transition:
+          border-color 0.15s,
+          color 0.15s;
       }
 
       body.variant-terminal .proj-github:hover {
@@ -316,8 +332,13 @@
       }
 
       @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
       }
 
       body.variant-terminal .footer {
@@ -364,7 +385,9 @@
         color: var(--text);
       }
 
-      body.variant-pure .site-name:hover { color: var(--accent); }
+      body.variant-pure .site-name:hover {
+        color: var(--accent);
+      }
 
       body.variant-pure .nav {
         display: flex;
@@ -380,7 +403,9 @@
         transition: color 0.15s;
       }
 
-      body.variant-pure .nav a:hover { color: var(--text); }
+      body.variant-pure .nav a:hover {
+        color: var(--text);
+      }
 
       body.variant-pure .hero {
         margin-bottom: 5rem;
@@ -419,7 +444,9 @@
         max-width: 50ch;
       }
 
-      body.variant-pure .prose p + p { margin-top: 1rem; }
+      body.variant-pure .prose p + p {
+        margin-top: 1rem;
+      }
 
       body.variant-pure .project-list {
         list-style: none;
@@ -457,7 +484,9 @@
         white-space: nowrap;
       }
 
-      body.variant-pure .project-list .proj-name:hover { color: var(--accent); }
+      body.variant-pure .project-list .proj-name:hover {
+        color: var(--accent);
+      }
 
       body.variant-pure .project-list .proj-desc {
         font-family: "Inter", sans-serif;
@@ -477,7 +506,9 @@
         flex-shrink: 0;
       }
 
-      body.variant-pure .project-list .proj-github:hover { color: var(--accent); }
+      body.variant-pure .project-list .proj-github:hover {
+        color: var(--accent);
+      }
 
       body.variant-pure .contact-list {
         list-style: none;
@@ -496,10 +527,14 @@
         gap: 0.2rem;
       }
 
-      body.variant-pure .contact-list a .muted { color: var(--muted); }
+      body.variant-pure .contact-list a .muted {
+        color: var(--muted);
+      }
 
       body.variant-pure .contact-list a:hover,
-      body.variant-pure .contact-list a:hover .muted { color: var(--accent); }
+      body.variant-pure .contact-list a:hover .muted {
+        color: var(--accent);
+      }
 
       body.variant-pure footer {
         margin-top: 6rem;
@@ -522,7 +557,11 @@
         --tag-bg: #ede6d9;
         background: var(--bg);
         color: var(--text);
-        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
         -webkit-font-smoothing: antialiased;
         min-height: 100vh;
       }
@@ -561,7 +600,9 @@
         transition: color 0.1s;
       }
 
-      body.variant-bold .nav-links a:hover { color: var(--text); }
+      body.variant-bold .nav-links a:hover {
+        color: var(--text);
+      }
 
       body.variant-bold .hero {
         margin-bottom: 5rem;
@@ -652,7 +693,9 @@
         font-weight: 300;
       }
 
-      body.variant-bold .about-text p + p { margin-top: 0.75rem; }
+      body.variant-bold .about-text p + p {
+        margin-top: 0.75rem;
+      }
 
       body.variant-bold .about-text strong {
         font-weight: 600;
@@ -677,7 +720,9 @@
         color: #555;
       }
 
-      body.variant-bold .projects-full { margin-bottom: 4rem; }
+      body.variant-bold .projects-full {
+        margin-bottom: 4rem;
+      }
 
       body.variant-bold .projects-grid {
         list-style: none;
@@ -742,7 +787,9 @@
         text-decoration: none;
       }
 
-      body.variant-bold .proj-link:hover { color: var(--accent); }
+      body.variant-bold .proj-link:hover {
+        color: var(--accent);
+      }
 
       body.variant-bold .contact-chip {
         display: inline-flex;
@@ -756,7 +803,9 @@
         border: 1px solid var(--border);
         padding: 0.35rem 0.75rem;
         border-radius: 100px;
-        transition: border-color 0.15s, color 0.15s;
+        transition:
+          border-color 0.15s,
+          color 0.15s;
       }
 
       body.variant-bold .contact-chip:hover {
@@ -824,29 +873,51 @@
          HIDDEN VARIANTS
          ═══════════════════════════════════════════════════════════════ */
 
-      .variant-content { display: none; }
-      .variant-content.active { display: block; }
+      .variant-content {
+        display: none;
+      }
+      .variant-content.active {
+        display: block;
+      }
 
       @media (max-width: 600px) {
-        body.variant-terminal { padding: 2rem 1rem 4rem; }
-        body.variant-pure { padding: 3rem 1.25rem 5rem; }
-        body.variant-bold { padding: 2rem 1.25rem 5rem; }
+        body.variant-terminal {
+          padding: 2rem 1rem 4rem;
+        }
+        body.variant-pure {
+          padding: 3rem 1.25rem 5rem;
+        }
+        body.variant-bold {
+          padding: 2rem 1.25rem 5rem;
+        }
 
-        body.variant-bold .two-col { grid-template-columns: 1fr; gap: 2rem; }
-        body.variant-bold .projects-grid { grid-template-columns: 1fr; }
-        body.variant-pure .project-list .proj-desc { display: none; }
+        body.variant-bold .two-col {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        body.variant-bold .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        body.variant-pure .project-list .proj-desc {
+          display: none;
+        }
       }
     </style>
   </head>
   <body class="variant-pure">
-
     <!-- VARIANT SWITCHER -->
     <div class="variant-switcher">
       <button class="variant-btn active" data-variant="pure">Pure</button>
       <button class="variant-btn" data-variant="terminal">Terminal</button>
       <button class="variant-btn" data-variant="bold">Bold</button>
-      <label class="variant-select-label" for="variant-select-input">Design</label>
-      <select id="variant-select-input" class="variant-select" aria-label="Choose variant">
+      <label class="variant-select-label" for="variant-select-input"
+        >Design</label
+      >
+      <select
+        id="variant-select-input"
+        class="variant-select"
+        aria-label="Choose variant"
+      >
         <option value="pure">Pure</option>
         <option value="terminal">Terminal</option>
         <option value="bold">Bold</option>
@@ -869,8 +940,8 @@
 
       <div class="hero">
         <p>
-          Software engineer at Microsoft. I build things for the internet,
-          from interfaces to infrastructure.
+          Software engineer at Microsoft. I build things for the internet, from
+          interfaces to infrastructure.
         </p>
       </div>
 
@@ -878,9 +949,10 @@
         <p class="section-title">About</p>
         <div class="prose">
           <p>
-            I work at <span style="color:var(--text)">Microsoft</span>, building software that ships to a lot of people.
-            My work spans interfaces, infrastructure, and distributed systems.
-            I care about simplicity, not as an aesthetic, but as a discipline.
+            I work at <span style="color: var(--text)">Microsoft</span>,
+            building software that ships to a lot of people. My work spans
+            interfaces, infrastructure, and distributed systems. I care about
+            simplicity, not as an aesthetic, but as a discipline.
           </p>
           <p>
             Outside of code, I read history, think about literature, and stay
@@ -894,51 +966,136 @@
         <ul class="project-list">
           <li>
             <div class="proj-left">
-              <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
+              <a
+                class="proj-name"
+                href="https://trove-app-f2f4.onrender.com/"
+                target="_blank"
+                rel="noopener"
+                >trove</a
+              >
               <span class="proj-desc">catalogue and share your links</span>
             </div>
-            <a class="proj-github" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">github ↗</a>
-          <p class="tagline">Software Engineer <span class="at">@</span> Microsoft</p>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/trove-app"
+              target="_blank"
+              rel="noopener"
+              >github ↗</a
+            >
+          </li>
+
           <li>
             <div class="proj-left">
-              <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">pastebin</a>
+              <a
+                class="proj-name"
+                href="https://frontend-production-b7985.up.railway.app"
+                target="_blank"
+                rel="noopener"
+                >pastebin</a
+              >
               <span class="proj-desc">minimalist, text-only pastebin</span>
             </div>
-            <a class="proj-github" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">github ↗</a>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/pastr"
+              target="_blank"
+              rel="noopener"
+              >github ↗</a
+            >
           </li>
           <li>
             <div class="proj-left">
-              <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
+              <a
+                class="proj-name"
+                href="https://github.com/jidemusty/accio"
+                target="_blank"
+                rel="noopener"
+                >accio</a
+              >
               <span class="proj-desc">an ORM, built from scratch</span>
             </div>
-            <a class="proj-github" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">github ↗</a>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/accio"
+              target="_blank"
+              rel="noopener"
+              >github ↗</a
+            >
           </li>
           <li>
             <div class="proj-left">
-              <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+              <a
+                class="proj-name"
+                href="https://focused-visvesvaraya-fea347.netlify.app"
+                target="_blank"
+                rel="noopener"
+                >connect four</a
+              >
               <span class="proj-desc">over-engineered</span>
             </div>
-            <a class="proj-github" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">github ↗</a>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/ConnectFour"
+              target="_blank"
+              rel="noopener"
+              >github ↗</a
+            >
           </li>
           <li>
             <div class="proj-left">
-              <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+              <a
+                class="proj-name"
+                href="https://github.com/jidemusty/greenlight"
+                target="_blank"
+                rel="noopener"
+                >greenlight</a
+              >
               <span class="proj-desc">IMDB-like movies API in Go</span>
             </div>
-            <a class="proj-github" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">github ↗</a>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/greenlight"
+              target="_blank"
+              rel="noopener"
+              >github ↗</a
+            >
           </li>
           <li>
             <div class="proj-left">
-              <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
+              <a
+                class="proj-name"
+                href="https://distract-react.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                >distract</a
+              >
             </div>
-            <a class="proj-github" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">github ↗</a>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/distract-react"
+              target="_blank"
+              rel="noopener"
+              >github ↗</a
+            >
           </li>
           <li>
             <div class="proj-left">
-              <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+              <a
+                class="proj-name"
+                href="https://notes-lovat-xi.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                >notes</a
+              >
               <span class="proj-desc">dead simple note-taking app</span>
             </div>
-            <a class="proj-github" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">github ↗</a>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/notes"
+              target="_blank"
+              rel="noopener"
+              >github ↗</a
+            >
           </li>
         </ul>
       </section>
@@ -946,15 +1103,29 @@
       <section id="contact">
         <p class="section-title">Contact</p>
         <ul class="contact-list">
-          <li><a href="https://github.com/jidemusty" target="_blank" rel="noopener"><span class="muted">github.com/</span>jidemusty</a></li>
-          <li><a href="https://www.linkedin.com/in/mustapha-adubiagbe" target="_blank" rel="noopener"><span class="muted">linkedin/</span>mustapha-adubiagbe</a></li>
-          <li><a href="mailto:adubiagbebm@gmail.com">adubiagbebm(at)gmail.com</a></li>
+          <li>
+            <a
+              href="https://github.com/jidemusty"
+              target="_blank"
+              rel="noopener"
+              ><span class="muted">github.com/</span>jidemusty</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/mustapha-adubiagbe"
+              target="_blank"
+              rel="noopener"
+              ><span class="muted">linkedin/</span>mustapha-adubiagbe</a
+            >
+          </li>
+          <li>
+            <a href="mailto:adubiagbebm@gmail.com">adubiagbebm(at)gmail.com</a>
+          </li>
         </ul>
       </section>
 
-      <footer>
-        © 2024 Mustapha Adubiagbe
-      </footer>
+      <footer>© 2024 Mustapha Adubiagbe</footer>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════
@@ -965,20 +1136,29 @@
         <p class="prompt">
           <span class="path">~/portfolio</span>
           <span class="git"> (main)</span>
-          <span style="color: var(--text-muted);"> $</span>
+          <span style="color: var(--text-muted)"> $</span>
         </p>
-        <a href="/" class="name">Mustapha Adubiagbe<span class="cursor"></span></a>
-        <p class="tagline">Software Engineer <span class="at">@</span> Microsoft</p>
+        <a href="/" class="name"
+          >Mustapha Adubiagbe<span class="cursor"></span
+        ></a>
+        <p class="tagline">
+          Software Engineer <span class="at">@</span> Microsoft
+        </p>
       </header>
 
       <section>
         <div class="section-label">about</div>
         <div class="about-text">
-          <p>I work at <span class="highlight">Microsoft</span>, building software that ships to a lot of people.
-            My work spans interfaces, infrastructure, and distributed systems.
-            I care about simplicity, not as an aesthetic, but as a discipline.</p>
-          <p>Outside of code, I read history, think about literature, and stay
-            curious about the ways technology reshapes how we live.</p>
+          <p>
+            I work at <span class="highlight">Microsoft</span>, building
+            software that ships to a lot of people. My work spans interfaces,
+            infrastructure, and distributed systems. I care about simplicity,
+            not as an aesthetic, but as a discipline.
+          </p>
+          <p>
+            Outside of code, I read history, think about literature, and stay
+            curious about the ways technology reshapes how we live.
+          </p>
         </div>
       </section>
 
@@ -988,56 +1168,146 @@
           <li>
             <span class="arrow">▸</span>
             <div class="proj-meta">
-              <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
-              <span class="proj-desc-inline">— catalogue and share your links</span>
-              <a class="proj-github" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">gh</a>
+              <a
+                class="proj-name"
+                href="https://trove-app-f2f4.onrender.com/"
+                target="_blank"
+                rel="noopener"
+                >trove</a
+              >
+              <span class="proj-desc-inline"
+                >— catalogue and share your links</span
+              >
+              <a
+                class="proj-github"
+                href="https://github.com/jidemusty/trove-app"
+                target="_blank"
+                rel="noopener"
+                >gh</a
+              >
             </div>
           </li>
           <li>
             <span class="arrow">▸</span>
             <div class="proj-meta">
-              <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">minimalist pastebin</a>
-              <span class="proj-desc-inline">— text sharing, stripped down</span>
-              <a class="proj-github" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">gh</a>
+              <a
+                class="proj-name"
+                href="https://frontend-production-b7985.up.railway.app"
+                target="_blank"
+                rel="noopener"
+                >minimalist pastebin</a
+              >
+              <span class="proj-desc-inline"
+                >— text sharing, stripped down</span
+              >
+              <a
+                class="proj-github"
+                href="https://github.com/jidemusty/pastr"
+                target="_blank"
+                rel="noopener"
+                >gh</a
+              >
             </div>
           </li>
           <li>
             <span class="arrow">▸</span>
             <div class="proj-meta">
-              <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
-              <span class="proj-desc-inline">— building an ORM from scratch</span>
-              <a class="proj-github" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">gh</a>
+              <a
+                class="proj-name"
+                href="https://github.com/jidemusty/accio"
+                target="_blank"
+                rel="noopener"
+                >accio</a
+              >
+              <span class="proj-desc-inline"
+                >— building an ORM from scratch</span
+              >
+              <a
+                class="proj-github"
+                href="https://github.com/jidemusty/accio"
+                target="_blank"
+                rel="noopener"
+                >gh</a
+              >
             </div>
           </li>
           <li>
             <span class="arrow">▸</span>
             <div class="proj-meta">
-              <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+              <a
+                class="proj-name"
+                href="https://focused-visvesvaraya-fea347.netlify.app"
+                target="_blank"
+                rel="noopener"
+                >connect four</a
+              >
               <span class="proj-desc-inline">— over-engineered</span>
-              <a class="proj-github" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">gh</a>
+              <a
+                class="proj-github"
+                href="https://github.com/jidemusty/ConnectFour"
+                target="_blank"
+                rel="noopener"
+                >gh</a
+              >
             </div>
           </li>
           <li>
             <span class="arrow">▸</span>
             <div class="proj-meta">
-              <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+              <a
+                class="proj-name"
+                href="https://github.com/jidemusty/greenlight"
+                target="_blank"
+                rel="noopener"
+                >greenlight</a
+              >
               <span class="proj-desc-inline">— IMDB-like movies API in Go</span>
-              <a class="proj-github" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">gh</a>
+              <a
+                class="proj-github"
+                href="https://github.com/jidemusty/greenlight"
+                target="_blank"
+                rel="noopener"
+                >gh</a
+              >
             </div>
           </li>
           <li>
             <span class="arrow">▸</span>
             <div class="proj-meta">
-              <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
-              <a class="proj-github" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">gh</a>
+              <a
+                class="proj-name"
+                href="https://distract-react.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                >distract</a
+              >
+              <a
+                class="proj-github"
+                href="https://github.com/jidemusty/distract-react"
+                target="_blank"
+                rel="noopener"
+                >gh</a
+              >
             </div>
           </li>
           <li>
             <span class="arrow">▸</span>
             <div class="proj-meta">
-              <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+              <a
+                class="proj-name"
+                href="https://notes-lovat-xi.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                >notes</a
+              >
               <span class="proj-desc-inline">— dead simple note-taking</span>
-              <a class="proj-github" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">gh</a>
+              <a
+                class="proj-github"
+                href="https://github.com/jidemusty/notes"
+                target="_blank"
+                rel="noopener"
+                >gh</a
+              >
             </div>
           </li>
         </ul>
@@ -1048,14 +1318,24 @@
         <ul class="link-list">
           <li>
             <span class="arrow">▸</span>
-            <a href="https://github.com/jidemusty" target="_blank" rel="noopener">
-              <span class="muted">github.com/</span><span class="handle">jidemusty</span>
+            <a
+              href="https://github.com/jidemusty"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="muted">github.com/</span
+              ><span class="handle">jidemusty</span>
             </a>
           </li>
           <li>
             <span class="arrow">▸</span>
-            <a href="https://www.linkedin.com/in/mustapha-adubiagbe" target="_blank" rel="noopener">
-              <span class="muted">linkedin/</span><span class="handle">mustapha-adubiagbe</span>
+            <a
+              href="https://www.linkedin.com/in/mustapha-adubiagbe"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="muted">linkedin/</span
+              ><span class="handle">mustapha-adubiagbe</span>
             </a>
           </li>
           <li>
@@ -1105,9 +1385,10 @@
           </div>
           <div class="about-text">
             <p>
-              I work at <strong>Microsoft</strong>, building software that ships to a lot of people.
-              My work spans interfaces, infrastructure, and distributed systems.
-              I care about <strong>simplicity</strong>, not as an aesthetic, but as a discipline.
+              I work at <strong>Microsoft</strong>, building software that ships
+              to a lot of people. My work spans interfaces, infrastructure, and
+              distributed systems. I care about <strong>simplicity</strong>, not
+              as an aesthetic, but as a discipline.
             </p>
             <p>
               Outside of code, I read history, think about literature, and stay
@@ -1129,10 +1410,30 @@
             <h2>Contact</h2>
           </div>
           <div class="contact-chips">
-            <a class="contact-chip" href="https://github.com/jidemusty" target="_blank" rel="noopener">GitHub</a>
-            <a class="contact-chip" href="https://www.linkedin.com/in/mustapha-adubiagbe" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="contact-chip" href="https://medium.com/@Engr_Ejo" target="_blank" rel="noopener">Medium</a>
-            <a class="contact-chip" href="mailto:adubiagbebm@gmail.com">Email</a>
+            <a
+              class="contact-chip"
+              href="https://github.com/jidemusty"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            <a
+              class="contact-chip"
+              href="https://www.linkedin.com/in/mustapha-adubiagbe"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+            <a
+              class="contact-chip"
+              href="https://medium.com/@Engr_Ejo"
+              target="_blank"
+              rel="noopener"
+              >Medium</a
+            >
+            <a class="contact-chip" href="mailto:adubiagbebm@gmail.com"
+              >Email</a
+            >
           </div>
         </div>
       </div>
@@ -1144,62 +1445,152 @@
         </div>
         <ul class="projects-grid">
           <li>
-            <a class="proj-name" href="https://trove-app-f2f4.onrender.com/" target="_blank" rel="noopener">trove</a>
+            <a
+              class="proj-name"
+              href="https://trove-app-f2f4.onrender.com/"
+              target="_blank"
+              rel="noopener"
+              >trove</a
+            >
             <p class="proj-desc">Catalogue and share your links.</p>
             <div class="proj-footer">
               <span class="live-badge">live</span>
-              <a class="proj-link" href="https://github.com/jidemusty/trove-app" target="_blank" rel="noopener">github ↗</a>
+              <a
+                class="proj-link"
+                href="https://github.com/jidemusty/trove-app"
+                target="_blank"
+                rel="noopener"
+                >github ↗</a
+              >
             </div>
           </li>
           <li>
-            <a class="proj-name" href="https://frontend-production-b7985.up.railway.app" target="_blank" rel="noopener">minimalist pastebin</a>
+            <a
+              class="proj-name"
+              href="https://frontend-production-b7985.up.railway.app"
+              target="_blank"
+              rel="noopener"
+              >minimalist pastebin</a
+            >
             <p class="proj-desc">Text sharing, stripped to the bone.</p>
             <div class="proj-footer">
               <span class="live-badge">live</span>
-              <a class="proj-link" href="https://github.com/jidemusty/pastr" target="_blank" rel="noopener">github ↗</a>
+              <a
+                class="proj-link"
+                href="https://github.com/jidemusty/pastr"
+                target="_blank"
+                rel="noopener"
+                >github ↗</a
+              >
             </div>
           </li>
           <li>
-            <a class="proj-name" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">accio</a>
+            <a
+              class="proj-name"
+              href="https://github.com/jidemusty/accio"
+              target="_blank"
+              rel="noopener"
+              >accio</a
+            >
             <p class="proj-desc">My attempt at building an ORM from scratch.</p>
             <div class="proj-footer">
               <span></span>
-              <a class="proj-link" href="https://github.com/jidemusty/accio" target="_blank" rel="noopener">github ↗</a>
+              <a
+                class="proj-link"
+                href="https://github.com/jidemusty/accio"
+                target="_blank"
+                rel="noopener"
+                >github ↗</a
+              >
             </div>
           </li>
           <li>
-            <a class="proj-name" href="https://focused-visvesvaraya-fea347.netlify.app" target="_blank" rel="noopener">connect four</a>
+            <a
+              class="proj-name"
+              href="https://focused-visvesvaraya-fea347.netlify.app"
+              target="_blank"
+              rel="noopener"
+              >connect four</a
+            >
             <p class="proj-desc">A classic game, over-engineered.</p>
             <div class="proj-footer">
               <span class="live-badge">live</span>
-              <a class="proj-link" href="https://github.com/jidemusty/ConnectFour" target="_blank" rel="noopener">github ↗</a>
+              <a
+                class="proj-link"
+                href="https://github.com/jidemusty/ConnectFour"
+                target="_blank"
+                rel="noopener"
+                >github ↗</a
+              >
             </div>
           </li>
           <li>
-            <a class="proj-name" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">greenlight</a>
+            <a
+              class="proj-name"
+              href="https://github.com/jidemusty/greenlight"
+              target="_blank"
+              rel="noopener"
+              >greenlight</a
+            >
             <p class="proj-desc">IMDB-like movies API written in Go.</p>
             <div class="proj-footer">
               <span></span>
-              <a class="proj-link" href="https://github.com/jidemusty/greenlight" target="_blank" rel="noopener">github ↗</a>
+              <a
+                class="proj-link"
+                href="https://github.com/jidemusty/greenlight"
+                target="_blank"
+                rel="noopener"
+                >github ↗</a
+              >
             </div>
           </li>
           <li>
-            <a class="proj-name" href="https://distract-react.vercel.app/" target="_blank" rel="noopener">distract</a>
+            <a
+              class="proj-name"
+              href="https://distract-react.vercel.app/"
+              target="_blank"
+              rel="noopener"
+              >distract</a
+            >
             <p class="proj-desc">—</p>
             <div class="proj-footer">
               <span class="live-badge">live</span>
-              <a class="proj-link" href="https://github.com/jidemusty/distract-react" target="_blank" rel="noopener">github ↗</a>
+              <a
+                class="proj-link"
+                href="https://github.com/jidemusty/distract-react"
+                target="_blank"
+                rel="noopener"
+                >github ↗</a
+              >
             </div>
           </li>
           <li>
-            <a class="proj-name" href="https://notes-lovat-xi.vercel.app/" target="_blank" rel="noopener">notes</a>
+            <a
+              class="proj-name"
+              href="https://notes-lovat-xi.vercel.app/"
+              target="_blank"
+              rel="noopener"
+              >notes</a
+            >
             <p class="proj-desc">A dead simple note-taking app.</p>
             <div class="proj-footer">
               <span class="live-badge">live</span>
-              <a class="proj-link" href="https://github.com/jidemusty/notes" target="_blank" rel="noopener">github ↗</a>
+              <a
+                class="proj-link"
+                href="https://github.com/jidemusty/notes"
+                target="_blank"
+                rel="noopener"
+                >github ↗</a
+              >
             </div>
           </li>
-          <li style="background: transparent; pointer-events: none; border-color: transparent;"></li>
+          <li
+            style="
+              background: transparent;
+              pointer-events: none;
+              border-color: transparent;
+            "
+          ></li>
         </ul>
       </div>
 
@@ -1211,48 +1602,50 @@
 
     <script>
       // Variant Switcher Logic
-      const variantBtns = document.querySelectorAll('.variant-btn');
-      const variantContents = document.querySelectorAll('.variant-content');
-      const variantSelect = document.querySelector('.variant-select');
+      const variantBtns = document.querySelectorAll(".variant-btn");
+      const variantContents = document.querySelectorAll(".variant-content");
+      const variantSelect = document.querySelector(".variant-select");
 
       // Load saved variant from localStorage or default to "pure"
-      const savedVariant = localStorage.getItem('portfolioVariant') || 'pure';
+      const savedVariant = localStorage.getItem("portfolioVariant") || "pure";
       setVariant(savedVariant);
 
-      variantBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const variant = btn.getAttribute('data-variant');
+      variantBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const variant = btn.getAttribute("data-variant");
           setVariant(variant);
-          localStorage.setItem('portfolioVariant', variant);
+          localStorage.setItem("portfolioVariant", variant);
         });
       });
 
-      variantSelect.addEventListener('change', () => {
+      variantSelect.addEventListener("change", () => {
         const variant = variantSelect.value;
         setVariant(variant);
-        localStorage.setItem('portfolioVariant', variant);
+        localStorage.setItem("portfolioVariant", variant);
       });
 
       function setVariant(variant) {
-        const isKnownVariant = Array.from(variantContents).some(content => content.getAttribute('data-variant') === variant);
-        const resolvedVariant = isKnownVariant ? variant : 'pure';
+        const isKnownVariant = Array.from(variantContents).some(
+          (content) => content.getAttribute("data-variant") === variant,
+        );
+        const resolvedVariant = isKnownVariant ? variant : "pure";
 
         // Update body class
         document.body.className = `variant-${resolvedVariant}`;
 
         // Update active variant content
-        variantContents.forEach(content => {
-          content.classList.remove('active');
-          if (content.getAttribute('data-variant') === resolvedVariant) {
-            content.classList.add('active');
+        variantContents.forEach((content) => {
+          content.classList.remove("active");
+          if (content.getAttribute("data-variant") === resolvedVariant) {
+            content.classList.add("active");
           }
         });
 
         // Update active button
-        variantBtns.forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.getAttribute('data-variant') === resolvedVariant) {
-            btn.classList.add('active');
+        variantBtns.forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.getAttribute("data-variant") === resolvedVariant) {
+            btn.classList.add("active");
           }
         });
 
