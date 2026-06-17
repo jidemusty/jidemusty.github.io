@@ -280,8 +280,6 @@
         border: 1px solid var(--border);
         padding: 0 0.4rem;
         border-radius: 3px;
-        font-family: "Inter", "Segoe UI Symbol", "Apple Symbols", sans-serif;
-        font-variant-emoji: text;
         transition:
           border-color 0.15s,
           color 0.15s;
@@ -500,13 +498,12 @@
       }
 
       body.variant-pure .project-list .proj-github {
-        font-family: "Inter", "Segoe UI Symbol", "Apple Symbols", sans-serif;
+        font-family: "Inter", sans-serif;
         font-size: 0.78rem;
         color: var(--muted);
         text-decoration: none;
         white-space: nowrap;
         flex-shrink: 0;
-        font-variant-emoji: text;
       }
 
       body.variant-pure .project-list .proj-github:hover {
@@ -788,8 +785,6 @@
         font-size: 0.75rem;
         color: var(--muted);
         text-decoration: none;
-        font-family: "Inter", "Segoe UI Symbol", "Apple Symbols", sans-serif;
-        font-variant-emoji: text;
       }
 
       body.variant-bold .proj-link:hover {
@@ -956,7 +951,36 @@
           <p>
             I work at <span style="color: var(--text)">Microsoft</span>,
             building software that ships to a lot of people. My work spans
-            interfaces, infrastructure, and distr              >github ↗&#xFE0E;</a
+            interfaces, infrastructure, and distributed systems. I care about
+            simplicity, not as an aesthetic, but as a discipline.
+          </p>
+          <p>
+            Outside of code, I read history, think about literature, and stay
+            curious about the ways technology reshapes how we live.
+          </p>
+        </div>
+      </section>
+
+      <section id="projects">
+        <p class="section-title">Projects</p>
+        <ul class="project-list">
+          <li>
+            <div class="proj-left">
+              <a
+                class="proj-name"
+                href="https://trove-app-f2f4.onrender.com/"
+                target="_blank"
+                rel="noopener"
+                >trove</a
+              >
+              <span class="proj-desc">catalogue and share your links</span>
+            </div>
+            <a
+              class="proj-github"
+              href="https://github.com/jidemusty/trove-app"
+              target="_blank"
+              rel="noopener"
+              >github</a
             >
           </li>
 
@@ -976,7 +1000,7 @@
               href="https://github.com/jidemusty/pastr"
               target="_blank"
               rel="noopener"
-              >github ↗&#xFE0E;</a
+              >github</a
             >
           </li>
           <li>
@@ -995,7 +1019,7 @@
               href="https://github.com/jidemusty/accio"
               target="_blank"
               rel="noopener"
-              >github ↗&#xFE0E;</a
+              >github</a
             >
           </li>
           <li>
@@ -1007,14 +1031,14 @@
                 rel="noopener"
                 >connect four</a
               >
-              <span class="proj-desc">over-engineered</span>
+              <span class="proj-desc">over-engineered connect four game</span>
             </div>
             <a
               class="proj-github"
               href="https://github.com/jidemusty/ConnectFour"
               target="_blank"
               rel="noopener"
-              >github ↗&#xFE0E;</a
+              >github</a
             >
           </li>
           <li>
@@ -1033,7 +1057,7 @@
               href="https://github.com/jidemusty/greenlight"
               target="_blank"
               rel="noopener"
-              >github ↗&#xFE0E;</a
+              >github</a
             >
           </li>
           <li>
@@ -1045,13 +1069,14 @@
                 rel="noopener"
                 >distract</a
               >
+              <span class="proj-desc">product Hunt, reddit, hackerNews</span>
             </div>
             <a
               class="proj-github"
               href="https://github.com/jidemusty/distract-react"
               target="_blank"
               rel="noopener"
-              >github ↗&#xFE0E;</a
+              >github</a
             >
           </li>
           <li>
@@ -1070,7 +1095,7 @@
               href="https://github.com/jidemusty/notes"
               target="_blank"
               rel="noopener"
-              >github ↗&#xFE0E;</a
+              >github</a
             >
           </li>
         </ul>
@@ -1436,7 +1461,7 @@
                 href="https://github.com/jidemusty/trove-app"
                 target="_blank"
                 rel="noopener"
-                >github ↗&#xFE0E;</a
+                >github ↗</a
               >
             </div>
           </li>
@@ -1456,7 +1481,7 @@
                 href="https://github.com/jidemusty/pastr"
                 target="_blank"
                 rel="noopener"
-                >github ↗&#xFE0E;</a
+                >github ↗</a
               >
             </div>
           </li>
@@ -1476,7 +1501,7 @@
                 href="https://github.com/jidemusty/accio"
                 target="_blank"
                 rel="noopener"
-                >github ↗&#xFE0E;</a
+                >github ↗</a
               >
             </div>
           </li>
@@ -1496,7 +1521,7 @@
                 href="https://github.com/jidemusty/ConnectFour"
                 target="_blank"
                 rel="noopener"
-                >github ↗&#xFE0E;</a
+                >github ↗</a
               >
             </div>
           </li>
@@ -1509,55 +1534,6 @@
               >greenlight</a
             >
             <p class="proj-desc">IMDB-like movies API written in Go.</p>
-            <div class="proj-footer">
-              <span></span>
-              <a
-                class="proj-link"
-                href="https://github.com/jidemusty/greenlight"
-                target="_blank"
-                rel="noopener"
-                >github ↗&#xFE0E;</a
-              >
-            </div>
-          </li>
-          <li>
-            <a
-              class="proj-name"
-              href="https://distract-react.vercel.app/"
-              target="_blank"
-              rel="noopener"
-              >distract</a
-            >
-            <p class="proj-desc">—</p>
-            <div class="proj-footer">
-              <span class="live-badge">live</span>
-              <a
-                class="proj-link"
-                href="https://github.com/jidemusty/distract-react"
-                target="_blank"
-                rel="noopener"
-                >github ↗&#xFE0E;</a
-              >
-            </div>
-          </li>
-          <li>
-            <a
-              class="proj-name"
-              href="https://notes-lovat-xi.vercel.app/"
-              target="_blank"
-              rel="noopener"
-              >notes</a
-            >
-            <p class="proj-desc">A dead simple note-taking app.</p>
-            <div class="proj-footer">
-              <span class="live-badge">live</span>
-              <a
-                class="proj-link"
-                href="https://github.com/jidemusty/notes"
-                target="_blank"
-                rel="noopener"
-                >github ↗&#xFE0E;</a
--like movies API written in Go.</p>
             <div class="proj-footer">
               <span></span>
               <a
