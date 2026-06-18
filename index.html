@@ -898,8 +898,20 @@
         body.variant-bold .projects-grid {
           grid-template-columns: 1fr;
         }
+        body.variant-pure .project-list li {
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+        body.variant-pure .project-list .proj-left {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.2rem;
+        }
         body.variant-pure .project-list .proj-desc {
-          display: none;
+          display: block;
+          white-space: normal;
+          overflow: visible;
+          text-overflow: clip;
         }
       }
     </style>
@@ -1069,7 +1081,9 @@
                 rel="noopener"
                 >distract</a
               >
-              <span class="proj-desc">product Hunt, reddit, hackerNews</span>
+              <span class="proj-desc"
+                >product-hunt, reddit & hackernews news</span
+              >
             </div>
             <a
               class="proj-github"
@@ -1281,6 +1295,9 @@
                 target="_blank"
                 rel="noopener"
                 >distract</a
+              >
+              <span class="proj-desc-inline"
+                >— product-hunt, reddit & hackernews news</span
               >
               <a
                 class="proj-github"
@@ -1553,7 +1570,7 @@
               rel="noopener"
               >distract</a
             >
-            <p class="proj-desc">—</p>
+            <p class="proj-desc">product-hunt, reddit & hackernews news</p>
             <div class="proj-footer">
               <span class="live-badge">live</span>
               <a
