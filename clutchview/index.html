@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ClutchView is a React Native live-match case study by Mustapha Adubiagbe."
+    />
+    <meta name="theme-color" content="#3157ed" />
+    <title>ClutchView — Mustapha Adubiagbe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/case-study.css" />
+    <script src="./assets/replay.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to the case study</a>
+
+    <header class="site-header">
+      <a class="portfolio-link" href="/">
+        <span>Mustapha Adubiagbe</span>
+        <span class="portfolio-link__context">Selected work</span>
+      </a>
+      <nav aria-label="ClutchView case study">
+        <a href="#story">Story</a>
+        <a href="#evidence">Evidence</a>
+        <a href="./architecture/">Architecture</a>
+        <a href="https://github.com/jidemusty/ClutchView">Source</a>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="match-id">Case file 01 / Live sports</p>
+          <h1>A live match UI that distrusts the network.</h1>
+          <p class="hero__summary">
+            ClutchView follows player projections while a match is moving. The
+            interface stays calm when events arrive late, twice, or out of
+            order.
+          </p>
+          <div class="hero__actions">
+            <a
+              class="action action--primary"
+              href="https://www.loom.com/share/809ba321e582446186b57461191662fa"
+              target="_blank"
+              rel="noopener"
+              >Watch the 3-minute demo</a
+            >
+            <a class="action action--quiet" href="#story"
+              >Read the build story</a
+            >
+          </div>
+        </div>
+
+        <div class="hero__stage" aria-label="ClutchView running on iOS">
+          <div class="phone">
+            <div class="phone__camera" aria-hidden="true"></div>
+            <div class="phone__viewport">
+              <img
+                src="./assets/clutchview-app.png"
+                alt="ClutchView live match screen showing a score, player watchlist, match tape, and replay controls."
+              />
+            </div>
+          </div>
+          <p class="stage-note">
+            Real simulator capture<br />
+            Expo + React Native
+          </p>
+        </div>
+
+        <div class="broadcast-strip" aria-label="Project summary">
+          <span>Deterministic replay</span>
+          <span>50 tests</span>
+          <span>Duplicate-safe goals</span>
+          <span>VoiceOver + Reduce Motion</span>
+        </div>
+      </section>
+
+      <section class="moment" id="story">
+        <div class="moment__minute" aria-hidden="true">68′</div>
+        <div class="moment__story">
+          <h2>A goal is not just another state update.</h2>
+          <p>
+            At the critical moment, the score, player projection, match tape,
+            haptic, animation, and VoiceOver announcement all need to agree.
+            ClutchView triggers that feedback only after the domain accepts the
+            event—not when the transport happens to deliver it.
+          </p>
+          <p>
+            That one boundary prevents a duplicate packet from becoming a
+            duplicate celebration.
+          </p>
+        </div>
+        <aside class="moment__callout">
+          <strong>Product rule</strong>
+          <p>Raw delivery can be noisy. Accepted match state cannot be.</p>
+        </aside>
+      </section>
+
+      <section class="test-bench" id="evidence">
+        <div class="test-bench__intro">
+          <p class="section-marker">Try the four-event fixture</p>
+          <h2>Put the feed under pressure.</h2>
+          <p>
+            This browser replay is the short version. The mobile app adds
+            disconnect buffering, delayed delivery, duplicates, and reversed
+            event pairs through its Fault lab.
+          </p>
+        </div>
+
+        <div class="console" aria-label="Interactive match replay">
+          <div class="console__score">
+            <span id="match-time">48:00</span>
+            <div class="console__matchup">
+              <span>NLA</span>
+              <strong
+                ><span id="home-score">0</span><i>:</i
+                ><span id="away-score">1</span></strong
+              >
+              <span>MC</span>
+            </div>
+            <span id="replay-status">Ready</span>
+          </div>
+          <div class="console__body">
+            <div class="watchlist">
+              <p class="console__heading">Projection watchlist</p>
+              <div class="watch-row">
+                <span>Marcus Bennett <small>Shots</small></span>
+                <strong><span data-value>0</span> / 2</strong>
+              </div>
+              <div class="watch-row">
+                <span>Alejandro Fernández <small>Shots on target</small></span>
+                <strong><span data-value>0</span> / 1</strong>
+              </div>
+              <div class="watch-row">
+                <span>Christopher Montgomery-Wells <small>Assists</small></span>
+                <strong><span data-value>0</span> / 1</strong>
+              </div>
+            </div>
+            <div class="event-feed">
+              <p class="console__heading">Accepted events</p>
+              <div id="event-feed" aria-live="polite">
+                <p class="event-feed__empty">
+                  No accepted events. Start the fixture.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="console__controls">
+            <button id="play-replay" type="button">Run fixture</button>
+            <button id="reset-replay" type="button" disabled>Reset</button>
+            <span>4× demo speed</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="contract">
+        <div class="contract__intro">
+          <h2>The recovery contract</h2>
+          <p>
+            Failure states are part of the product surface, not hidden test
+            scaffolding.
+          </p>
+        </div>
+        <div class="contract__rows">
+          <div class="contract-row">
+            <strong>Duplicate</strong>
+            <span>Ignore the known ID</span>
+            <span>No extra progress or feedback</span>
+          </div>
+          <div class="contract-row">
+            <strong>Sequence gap</strong>
+            <span>Buffer the future event</span>
+            <span>Show stale until the gap closes</span>
+          </div>
+          <div class="contract-row">
+            <strong>Disconnect</strong>
+            <span>Keep source time moving</span>
+            <span>Catch up in order on reconnect</span>
+          </div>
+          <div class="contract-row">
+            <strong>Wrong match</strong>
+            <span>Reject explicitly</span>
+            <span>Never fabricate success</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="measurement">
+        <div class="measurement__result">
+          <span>15</span>
+          <i>to</i>
+          <strong>7</strong>
+        </div>
+        <div class="measurement__copy">
+          <h2>Fewer projection renders across the same match.</h2>
+          <p>
+            A value-aware component boundary cut projection-row renders by 53%
+            across the deterministic fixture. A render-budget test protects the
+            result.
+          </p>
+          <p class="measurement__qualification">
+            The documented simulator run held 60 UI and 60 JS FPS in Expo Go
+            development mode. It is evidence for this fixture, not a
+            production-device benchmark.
+          </p>
+        </div>
+      </section>
+
+      <section class="deep-dives">
+        <div class="deep-dives__heading">
+          <p class="section-marker">Read past the interface</p>
+          <h2>The decisions are part of the deliverable.</h2>
+        </div>
+        <div class="deep-dives__links">
+          <a href="./architecture/" class="deep-link">
+            <span>Architecture</span>
+            <strong
+              >How replay, transport faults, domain acceptance, and UI state
+              stay separate.</strong
+            >
+            <span class="deep-link__action"
+              >Read the technical walkthrough</span
+            >
+          </a>
+          <a href="./ai-workflow/" class="deep-link deep-link--signal">
+            <span>AI-assisted workflow</span>
+            <strong
+              >Where AI accelerated the work—and where engineering judgment
+              stayed human-owned.</strong
+            >
+            <span class="deep-link__action">Read the working agreement</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="scope">
+        <h2>What this is—and is not.</h2>
+        <p>
+          ClutchView is a deliberately narrow vertical slice. It has no
+          authentication, wagering flow, or production sports feed. That scope
+          made room to go deep on live-event correctness, accessibility, failure
+          recovery, testing, and measured rendering behavior.
+        </p>
+        <p>
+          Next: a versioned WebSocket contract, a persisted reconnect cursor,
+          and production-build profiling across representative physical devices.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>ClutchView</strong>
+        <span>Designed and engineered by Mustapha Adubiagbe.</span>
+      </div>
+      <div class="site-footer__links">
+        <a href="/">Portfolio</a>
+        <a href="./architecture/">Architecture</a>
+        <a href="./ai-workflow/">AI workflow</a>
+        <a href="https://github.com/jidemusty/ClutchView">Repository</a>
+      </div>
+    </footer>
+  </body>
+</html>

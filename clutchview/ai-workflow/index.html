@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="How AI was used—and constrained—while building ClutchView."
+    />
+    <title>ClutchView AI workflow — Mustapha Adubiagbe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/case-study.css" />
+    <link rel="stylesheet" href="../assets/deep-dive.css" />
+  </head>
+  <body class="deep-page deep-page--ai">
+    <header class="deep-header">
+      <a href="../">ClutchView case study</a>
+      <nav aria-label="Technical documentation">
+        <a href="../architecture/">Architecture</a>
+        <a aria-current="page" href="./">AI workflow</a>
+        <a href="https://github.com/jidemusty/ClutchView">Source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="deep-hero">
+        <p>Working agreement</p>
+        <h1>AI accelerated the loop. It did not own the judgment.</h1>
+        <div class="deep-hero__summary">
+          <p>
+            I used AI as a pair programmer for alternatives, scaffolding, test
+            ideas, and editing. Product constraints, architecture, review,
+            device diagnosis, and evidence remained human-owned.
+          </p>
+        </div>
+      </section>
+
+      <section class="ownership">
+        <div class="ownership-column">
+          <h2>AI helped with</h2>
+          <ul>
+            <li>Comparing implementation approaches</li>
+            <li>Accelerating component and test scaffolding</li>
+            <li>Proposing duplicate and out-of-order failure cases</li>
+            <li>Auditing accessibility semantics</li>
+            <li>Editing documentation after decisions were made</li>
+          </ul>
+        </div>
+        <div class="ownership-column ownership-column--human">
+          <h2>I remained accountable for</h2>
+          <ul>
+            <li>Choosing the second-screen product problem</li>
+            <li>Defining the recovery contract</li>
+            <li>Selecting the architecture and visual direction</li>
+            <li>Reviewing every code change</li>
+            <li>Diagnosing physical-device failures</li>
+            <li>Deciding which performance claims were supportable</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="incident">
+        <div>
+          <p>Why this distinction matters</p>
+          <h2>The first “working” implementation failed on a real phone.</h2>
+        </div>
+        <div>
+          <p>
+            The haptic was not perceptible. VoiceOver did not announce the goal.
+            Reduce Motion still allowed the card pulse.
+          </p>
+          <p>
+            Device testing—not generated confidence—changed the implementation:
+            heavy impact haptics, queued high-priority announcements, and a
+            runtime Reduce Motion check immediately before animation.
+          </p>
+          <strong
+            >AI shortened the iteration. Physical evidence closed it.</strong
+          >
+        </div>
+      </section>
+
+      <section class="guardrails">
+        <h2>Five guardrails</h2>
+        <ol>
+          <li>
+            <span>01</span>
+            <p>
+              Every behavioral claim needs a test or a recorded manual check.
+            </p>
+          </li>
+          <li>
+            <span>02</span>
+            <p>AI output remains a proposal until it fits the domain model.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <p>Generated copy cannot overstate the benchmark environment.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <p>
+              Failures stay visible; code does not manufacture success-shaped
+              fallbacks.
+            </p>
+          </li>
+          <li>
+            <span>05</span>
+            <p>
+              The repository preserves tradeoffs, limitations, and validation
+              commands.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="workflow-result">
+        <h2>The result</h2>
+        <p>
+          AI increased the number of ideas and checks I could evaluate in the
+          available time. The engineering value still came from selecting,
+          integrating, testing, and sometimes rejecting those proposals.
+        </p>
+        <p>
+          That is the workflow I would bring to a team: faster exploration,
+          explicit ownership, and evidence before confidence.
+        </p>
+      </section>
+    </main>
+
+    <footer class="deep-footer">
+      <a href="../architecture/">Previous: Architecture</a>
+      <a href="../">Return to the case study</a>
+    </footer>
+  </body>
+</html>

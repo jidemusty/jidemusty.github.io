@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The architecture behind ClutchView's deterministic replay and ordered match state."
+    />
+    <title>ClutchView architecture — Mustapha Adubiagbe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/case-study.css" />
+    <link rel="stylesheet" href="../assets/deep-dive.css" />
+  </head>
+  <body class="deep-page">
+    <header class="deep-header">
+      <a href="../">ClutchView case study</a>
+      <nav aria-label="Technical documentation">
+        <a aria-current="page" href="./">Architecture</a>
+        <a href="../ai-workflow/">AI workflow</a>
+        <a href="https://github.com/jidemusty/ClutchView">Source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="deep-hero">
+        <p>Technical walkthrough</p>
+        <h1>Delivery is not truth.</h1>
+        <div class="deep-hero__summary">
+          <p>
+            ClutchView separates transport behavior from domain acceptance. The
+            source may delay, duplicate, disconnect, or reorder events; the
+            match state only changes when the next valid sequence is available.
+          </p>
+          <dl>
+            <div>
+              <dt>Input</dt>
+              <dd>Typed match events</dd>
+            </div>
+            <div>
+              <dt>Rule</dt>
+              <dd>Apply once, in sequence</dd>
+            </div>
+            <div>
+              <dt>Output</dt>
+              <dd>Stable screen state</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="flow-section">
+        <h2>One event, five boundaries</h2>
+        <ol class="system-flow">
+          <li>
+            <span>1</span>
+            <div>
+              <strong>Timed fixture</strong>
+              <p>
+                A repeatable four-event match makes every test reproducible.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <strong>Replay source</strong>
+              <p>
+                Owns clocks, speed, pause, disconnects, delays, duplicates, and
+                reversed pairs.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>3</span>
+            <div>
+              <strong>Acceptance boundary</strong>
+              <p>
+                Rejects wrong matches, ignores known IDs, and buffers sequence
+                gaps.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>4</span>
+            <div>
+              <strong>Presenter</strong>
+              <p>
+                Maps exact domain totals into score, projection, freshness, and
+                timeline values.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>5</span>
+            <div>
+              <strong>Critical feedback</strong>
+              <p>
+                Haptics, VoiceOver, and motion react only to newly accepted
+                goals.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="decision-section">
+        <div>
+          <p>Core decision</p>
+          <h2>Make ordering a domain guarantee.</h2>
+        </div>
+        <div class="decision-copy">
+          <p>
+            Reordering in React components would spread transport assumptions
+            across the interface. Instead, <code>applyMatchEvent</code> is the
+            single acceptance boundary.
+          </p>
+          <pre><code>raw event
+  → validate match
+  → reject known id
+  → buffer if sequence is ahead
+  → apply contiguous events
+  → publish MatchState</code></pre>
+          <p>The UI never has to decide whether a goal is safe to celebrate.</p>
+        </div>
+      </section>
+
+      <section class="guarantees">
+        <h2>Failure guarantees</h2>
+        <div class="guarantee-table">
+          <div>
+            <strong>Duplicate ID</strong><span>Ignored</span
+            ><span>No second haptic or progress update</span>
+          </div>
+          <div>
+            <strong>Future sequence</strong><span>Buffered</span
+            ><span>Visible state remains stale</span>
+          </div>
+          <div>
+            <strong>Disconnect</strong><span>Source continues</span
+            ><span>Events wait for reconnect</span>
+          </div>
+          <div>
+            <strong>Reconnect</strong><span>Ordered flush</span
+            ><span>Newest accepted goal gets feedback</span>
+          </div>
+          <div>
+            <strong>Wrong match</strong><span>Throws</span
+            ><span>No silent fallback</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tradeoff">
+        <h2>The deliberate limit</h2>
+        <p>
+          The replay source is local. That gives the project deterministic
+          timing and repeatable failure tests, but it does not model server
+          cursors, schema versioning, authentication, or process restarts.
+        </p>
+        <p>
+          In production, the domain boundary stays. The local source is replaced
+          by a versioned WebSocket adapter with a persisted reconnect cursor.
+        </p>
+      </section>
+    </main>
+
+    <footer class="deep-footer">
+      <a href="../">Return to the case study</a>
+      <a href="../ai-workflow/">Next: AI-assisted workflow</a>
+    </footer>
+  </body>
+</html>
