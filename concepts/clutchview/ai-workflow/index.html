@@ -8,26 +8,36 @@
       content="How AI was used and constrained while building ClutchView."
     />
     <title>ClutchView AI workflow | Mustapha Adubiagbe</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,300..900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="../../../assets/fonts/dm-sans-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../../../assets/fonts/space-grotesk-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <link rel="stylesheet" href="../assets/case-study.css" />
-    <link rel="stylesheet" href="../assets/deep-dive.css" />
   </head>
-  <body class="deep-page deep-page--ai">
+  <body class="deep-page">
+    <a class="skip-link" href="#content">Skip to the case study</a>
+
     <header class="deep-header">
-      <a href="../">ClutchView case study</a>
+      <a href="/">Mustapha Adubiagbe</a>
       <nav aria-label="Technical documentation">
+        <a href="../">Overview</a>
         <a href="../architecture/">Architecture</a>
         <a aria-current="page" href="./">AI workflow</a>
         <a href="https://github.com/jidemusty/ClutchView">Source</a>
       </nav>
     </header>
 
-    <main>
+    <main id="content">
       <section class="deep-hero">
         <h1>AI accelerated the loop. It did not own the judgment.</h1>
         <div class="deep-hero__summary">
@@ -74,9 +84,10 @@
             Reduce Motion still allowed the card pulse.
           </p>
           <p>
-            Device testing, not generated confidence, changed the implementation:
-            heavy impact haptics, queued high-priority announcements, and a
-            runtime Reduce Motion check immediately before animation.
+            Device testing, not generated confidence, changed the
+            implementation: heavy impact haptics, queued high-priority
+            announcements, and a runtime Reduce Motion check immediately before
+            animation.
           </p>
           <strong
             >AI shortened the iteration. Physical evidence closed it.</strong

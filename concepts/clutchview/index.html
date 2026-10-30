@@ -7,13 +7,21 @@
       name="description"
       content="ClutchView is a React Native live-match case study by Mustapha Adubiagbe."
     />
-    <meta name="theme-color" content="#3157ed" />
+    <meta name="theme-color" content="#f8fafc" />
     <title>ClutchView | Mustapha Adubiagbe</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wdth,wght@75..125,300..900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="../../assets/fonts/dm-sans-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../../assets/fonts/space-grotesk-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <link rel="stylesheet" href="./assets/case-study.css" />
     <script src="./assets/replay.js" defer></script>
@@ -22,14 +30,11 @@
     <a class="skip-link" href="#content">Skip to the case study</a>
 
     <header class="site-header">
-      <a class="portfolio-link" href="/">
-        <span>Mustapha Adubiagbe</span>
-        <span class="portfolio-link__context">Selected work</span>
-      </a>
+      <a href="/">Mustapha Adubiagbe</a>
       <nav aria-label="ClutchView case study">
-        <a href="#story">Story</a>
-        <a href="#evidence">Evidence</a>
+        <a href="./" aria-current="page">Overview</a>
         <a href="./architecture/">Architecture</a>
+        <a href="./ai-workflow/">AI workflow</a>
         <a href="https://github.com/jidemusty/ClutchView">Source</a>
       </nav>
     </header>
@@ -37,76 +42,28 @@
     <main id="content">
       <section class="hero">
         <div class="hero__copy">
-          <p class="match-id">Case file 01 / Live sports</p>
-          <h1>A live match UI that distrusts the network.</h1>
+          <p class="match-id">ClutchView / React Native case study</p>
+          <h1>Live match state without duplicate goals.</h1>
           <p class="hero__summary">
-            ClutchView follows player projections while a match is moving. The
-            interface stays calm when events arrive late, twice, or out of
-            order.
+            A React Native match interface that separates event delivery from
+            accepted state. Late, duplicate, and out-of-order events should not
+            become duplicate feedback.
           </p>
           <div class="hero__actions">
             <a
-              class="action action--primary"
+              class="action"
               href="https://www.loom.com/share/809ba321e582446186b57461191662fa"
               target="_blank"
               rel="noopener"
               >Watch the 3-minute demo</a
             >
-            <a class="action action--quiet" href="#story"
-              >Read the build story</a
-            >
           </div>
         </div>
-
-        <div class="hero__stage" aria-label="ClutchView running on iOS">
-          <div class="phone">
-            <div class="phone__camera" aria-hidden="true"></div>
-            <div class="phone__viewport">
-              <img
-                src="./assets/clutchview-app.png"
-                alt="ClutchView live match screen showing a score, player watchlist, match tape, and replay controls."
-              />
-            </div>
-          </div>
-          <p class="stage-note">
-            Real simulator capture<br />
-            Expo + React Native
-          </p>
-        </div>
-
-        <div class="broadcast-strip" aria-label="Project summary">
-          <span>Deterministic replay</span>
-          <span>50 tests</span>
-          <span>Duplicate-safe goals</span>
-          <span>VoiceOver + Reduce Motion</span>
-        </div>
-      </section>
-
-      <section class="moment" id="story">
-        <div class="moment__minute" aria-hidden="true">68′</div>
-        <div class="moment__story">
-          <h2>A goal is not just another state update.</h2>
-          <p>
-            At the critical moment, the score, player projection, match tape,
-            haptic, animation, and VoiceOver announcement all need to agree.
-            ClutchView triggers that feedback only after the domain accepts the
-            event, not when the transport happens to deliver it.
-          </p>
-          <p>
-            That one boundary prevents a duplicate packet from becoming a
-            duplicate celebration.
-          </p>
-        </div>
-        <aside class="moment__callout">
-          <strong>Product rule</strong>
-          <p>Raw delivery can be noisy. Accepted match state cannot be.</p>
-        </aside>
       </section>
 
       <section class="test-bench" id="evidence">
         <div class="test-bench__intro">
-          <p class="section-marker">Try the four-event fixture</p>
-          <h2>Put the feed under pressure.</h2>
+          <h2>Match replay</h2>
           <p>
             This browser replay is the short version. The mobile app adds
             disconnect buffering, delayed delivery, duplicates, and reversed
@@ -127,6 +84,11 @@
             </div>
             <span id="replay-status">Ready</span>
           </div>
+          <div class="console__controls">
+            <button id="play-replay" type="button">Run fixture</button>
+            <button id="reset-replay" type="button" disabled>Reset</button>
+            <span>4× demo speed</span>
+          </div>
           <div class="console__body">
             <div class="watchlist">
               <p class="console__heading">Projection watchlist</p>
@@ -145,18 +107,53 @@
             </div>
             <div class="event-feed">
               <p class="console__heading">Accepted events</p>
-              <div id="event-feed" aria-live="polite">
+              <div
+                id="event-feed"
+                role="log"
+                tabindex="0"
+                aria-live="polite"
+                aria-label="Accepted match events, newest first"
+              >
                 <p class="event-feed__empty">
                   No accepted events. Start the fixture.
                 </p>
               </div>
             </div>
           </div>
-          <div class="console__controls">
-            <button id="play-replay" type="button">Run fixture</button>
-            <button id="reset-replay" type="button" disabled>Reset</button>
-            <span>4× demo speed</span>
+        </div>
+
+        <details class="app-capture">
+          <summary>See the iOS app</summary>
+          <div class="hero__stage" aria-label="ClutchView running on iOS">
+            <figure class="product-capture">
+              <img
+                src="./assets/clutchview-app.png"
+                alt="ClutchView live match screen showing a score, player watchlist, match tape, and replay controls."
+                width="1206"
+                height="2622"
+                loading="lazy"
+              />
+              <figcaption>
+                iOS simulator capture. Expo + React Native.
+              </figcaption>
+            </figure>
           </div>
+        </details>
+      </section>
+
+      <section class="moment" id="story">
+        <div class="moment__story">
+          <h2>Accept the event before showing the goal.</h2>
+          <p>
+            At the critical moment, the score, player projection, match tape,
+            haptic, animation, and VoiceOver announcement all need to agree.
+            ClutchView triggers that feedback only after the domain accepts the
+            event, not when the transport happens to deliver it.
+          </p>
+          <p>
+            That one boundary prevents a duplicate packet from becoming a
+            duplicate celebration.
+          </p>
         </div>
       </section>
 
@@ -215,33 +212,28 @@
 
       <section class="deep-dives">
         <div class="deep-dives__heading">
-          <p class="section-marker">Read past the interface</p>
-          <h2>The decisions are part of the deliverable.</h2>
+          <h2>Engineering notes</h2>
         </div>
         <div class="deep-dives__links">
-          <a href="./architecture/" class="deep-link">
-            <span>Architecture</span>
-            <strong
-              >How replay, transport faults, domain acceptance, and UI state
-              stay separate.</strong
-            >
-            <span class="deep-link__action"
-              >Read the technical walkthrough</span
-            >
-          </a>
-          <a href="./ai-workflow/" class="deep-link deep-link--signal">
-            <span>AI-assisted workflow</span>
-            <strong
-              >Where AI accelerated the work while engineering judgment
-              stayed human-owned.</strong
-            >
-            <span class="deep-link__action">Read the working agreement</span>
-          </a>
+          <article class="reading-link">
+            <h3><a href="./architecture/">Architecture</a></h3>
+            <p>
+              How replay, transport faults, domain acceptance, and UI state stay
+              separate.
+            </p>
+          </article>
+          <article class="reading-link">
+            <h3><a href="./ai-workflow/">AI-assisted workflow</a></h3>
+            <p>
+              Where AI accelerated the work while engineering judgment stayed
+              human-owned.
+            </p>
+          </article>
         </div>
       </section>
 
       <section class="scope">
-        <h2>What this is and is not.</h2>
+        <h2>Scope and next steps</h2>
         <p>
           ClutchView is a deliberately narrow vertical slice. It has no
           authentication, wagering flow, or production sports feed. That scope
