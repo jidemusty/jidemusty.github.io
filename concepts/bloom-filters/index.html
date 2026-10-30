@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Do sites really check usernames with bloom filters? Mustapha Adubiagbe built one in Go, put it in front of Postgres, and measured what it saves."
+    />
+    <meta name="theme-color" content="#e7eae6" />
+    <title>Bloom filters and usernames | Mustapha Adubiagbe</title>
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/bloom.css" />
+    <script src="./assets/bloom.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to the write-up</a>
+
+    <header class="site-header">
+      <a class="site-name" href="/">Mustapha Adubiagbe</a>
+      <nav aria-label="Write-up sections">
+        <a href="#question">Question</a>
+        <a href="#build">Build</a>
+        <a href="#results">Results</a>
+        <a
+          href="https://github.com/jidemusty/bloom-usernames"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Source</a
+        >
+      </nav>
+    </header>
+
+    <main id="content">
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">
+          A bloom filter can’t tell you a username is taken.
+        </h1>
+        <p class="hero__lede">
+          It can only tell you, with certainty, that it isn’t. I built one in
+          Go to find out whether that is enough to protect a database.
+        </p>
+
+        <div class="filter" aria-labelledby="filter-title">
+          <h2 id="filter-title" class="visually-hidden">
+            Try a 32-switch bloom filter
+          </h2>
+          <div
+            class="filter__bits"
+            id="bits"
+            role="img"
+            aria-label="32 switches, 0 on"
+          ></div>
+
+          <form class="filter__controls" id="filter-form" novalidate>
+            <label for="name-input">Try a name</label>
+            <div class="filter__row">
+              <input
+                id="name-input"
+                name="name"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+                maxlength="40"
+                placeholder="carol"
+              />
+              <button type="submit" id="add-button">Add name</button>
+              <button type="button" id="reset-button" class="button--quiet">
+                Reset
+              </button>
+            </div>
+          </form>
+
+          <p class="filter__verdict" id="verdict" aria-live="polite">
+            Type a name to see which three switches it hashes to. Try “carol”,
+            then “zara”.
+          </p>
+
+          <dl class="filter__facts">
+            <div>
+              <dt>Added</dt>
+              <dd id="added-names">none yet</dd>
+            </div>
+            <div>
+              <dt>Switches on</dt>
+              <dd><span id="on-count">0</span> of 32</dd>
+            </div>
+            <div>
+              <dt>Chance a new name looks taken</dt>
+              <dd id="fp-chance">0%</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section" id="question" aria-labelledby="question-title">
+        <h2 id="question-title">The question</h2>
+        <div class="section__body prose">
+          <p>
+            I kept seeing the same example: sites use bloom filters to check
+            whether a username is free. I had always assumed they just ask the
+            database. So I built both, in a language I was new to, and measured
+            the difference.
+          </p>
+          <p>
+            The filter above works the same way as the real one, just smaller.
+            It is a row of switches. Adding a name turns on the switches its
+            hash points to. Checking a name looks at those switches.
+          </p>
+          <ul class="rules">
+            <li>
+              <strong>Any switch off means definitely free.</strong> Had the
+              name been added, every one of its switches would be on.
+            </li>
+            <li>
+              <strong>All switches on means maybe.</strong> Other names share
+              switches, so only the database can say for sure.
+            </li>
+            <li>
+              <strong>Names can’t be removed.</strong> Turning a shared switch
+              off would make another name look free.
+            </li>
+          </ul>
+          <p>
+            Keep adding names above and watch the chance of a false “maybe”
+            climb. That is why a real filter is sized up front: 100,000 names
+            at a 1% error rate needs about 958,000 switches and 7 hashes per
+            name, around 117 KB.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="build" aria-labelledby="build-title">
+        <h2 id="build-title">What I built</h2>
+        <div class="section__body">
+          <p class="prose">
+            A Go server with a live-check page, backed by Postgres and seeded
+            with 100,000 users. One setting switches between three checkers:
+            Postgres only, my own filter in the server’s memory, or a shared
+            RedisBloom filter.
+          </p>
+
+          <figure class="flow" aria-labelledby="flow-caption">
+            <ol class="flow__steps">
+              <li>Normalize the name</li>
+              <li>Ask the filter</li>
+              <li class="flow__fork">
+                <span class="flow__branch flow__branch--free"
+                  ><strong>No</strong> Answer “available” without touching
+                  Postgres</span
+                >
+                <span class="flow__branch flow__branch--maybe"
+                  ><strong>Maybe</strong> Ask Postgres, which has the final
+                  say</span
+                >
+              </li>
+            </ol>
+            <figcaption id="flow-caption">
+              Every availability check takes this path.
+            </figcaption>
+          </figure>
+
+          <div class="decisions" role="table" aria-label="Design decisions">
+            <div class="decisions__row" role="row">
+              <strong role="rowheader">Signup never checks first</strong>
+              <p role="cell">
+                It inserts and lets Postgres’s unique constraint pick the
+                winner. Fifty simultaneous signups for one name produced one
+                success and 49 “taken” responses.
+              </p>
+            </div>
+            <div class="decisions__row" role="row">
+              <strong role="rowheader">Filter first, then database</strong>
+              <p role="cell">
+                If the insert fails, the name is just an extra false positive.
+                The reverse order would briefly call a taken name free.
+              </p>
+            </div>
+            <div class="decisions__row" role="row">
+              <strong role="rowheader"
+                >Checks fail open, signups fail closed</strong
+              >
+              <p role="cell">
+                With Redis stopped, checks fell back to Postgres and stayed
+                correct. Signups were refused rather than stored where the
+                filter couldn’t see them.
+              </p>
+            </div>
+            <div class="decisions__row" role="row">
+              <strong role="rowheader">Rebuild aside, then swap</strong>
+              <p role="cell">
+                The shared filter is rebuilt under a temporary key and renamed
+                into place in one step, so no server ever reads a half-built
+                filter.
+              </p>
+            </div>
+          </div>
+
+          <p class="prose stack">
+            The filter itself is about 60 lines of Go: bits packed into bytes,
+            FNV-1a with double hashing, and a read/write lock so thousands of
+            checks can run at once. Its tests prove there are no false
+            negatives and measure the false-positive rate at 1.14%.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="results" aria-labelledby="results-title">
+        <h2 id="results-title">Results</h2>
+        <div class="section__body">
+          <figure class="share" aria-labelledby="share-caption">
+            <figcaption id="share-caption">
+              Share of checks that reached Postgres, out of 1.1 to 1.4 million
+              per run
+            </figcaption>
+            <div class="share__row">
+              <span class="share__label">Postgres only</span>
+              <span class="share__track"
+                ><span class="share__bar" style="--share: 100%"></span
+              ></span>
+              <span class="share__value">100%</span>
+            </div>
+            <div class="share__row">
+              <span class="share__label">Memory filter</span>
+              <span class="share__track"
+                ><span class="share__bar" style="--share: 11.1%"></span
+              ></span>
+              <span class="share__value">11.1%</span>
+            </div>
+            <div class="share__row">
+              <span class="share__label">RedisBloom</span>
+              <span class="share__track"
+                ><span class="share__bar" style="--share: 10.4%"></span
+              ></span>
+              <span class="share__value">10.4%</span>
+            </div>
+          </figure>
+
+          <p class="prose">
+            The traffic was 90% free names and 10% taken ones, from 50 virtual
+            users over 30 seconds. Taken names always need the database, so
+            about 10% is the floor. The remaining 1% or so are false positives.
+          </p>
+
+          <div class="table-wrap">
+            <table class="results">
+              <caption>
+                k6 load test, everything on one laptop
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Checker</th>
+                  <th scope="col">Requests per second</th>
+                  <th scope="col">Median</th>
+                  <th scope="col">95th percentile</th>
+                  <th scope="col">False positives</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Postgres only</th>
+                  <td>36,953</td>
+                  <td>1.05 ms</td>
+                  <td>1.66 ms</td>
+                  <td>n/a</td>
+                </tr>
+                <tr>
+                  <th scope="row">Memory filter</th>
+                  <td>46,856</td>
+                  <td>0.08 ms</td>
+                  <td>5.05 ms</td>
+                  <td>1.17%</td>
+                </tr>
+                <tr>
+                  <th scope="row">RedisBloom</th>
+                  <td>40,895</td>
+                  <td>0.98 ms</td>
+                  <td>2.51 ms</td>
+                  <td>0.50%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="surprise-title">
+        <h2 id="surprise-title">The surprise</h2>
+        <div class="section__body prose">
+          <p class="pull">
+            Postgres alone answered 37,000 checks a second. At this size, the
+            filter wasn’t needed.
+          </p>
+          <p>
+            One hundred thousand rows fit in memory, and a unique index finds
+            any name in a few steps. On one machine, a trip to Redis cost about
+            as much as a trip to Postgres. In the browser, the filter shaved
+            half a millisecond off a five-millisecond request, which nobody can
+            feel.
+          </p>
+          <p>
+            What it did change was how much work reached the database: about
+            nine in ten questions never arrived. That matters when the database
+            is the expensive, shared part of the system: tables too large for
+            memory, a database across the network, millions of people typing.
+            It is also why the heaviest users of bloom filters are storage
+            engines like Cassandra and RocksDB, which ask one before reading a
+            file from disk.
+          </p>
+          <p>
+            So the example I kept seeing is true, but for a different reason
+            than I expected. A bloom filter protects the database. It doesn’t
+            make the page faster.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="next-title">
+        <h2 id="next-title">Limits and next steps</h2>
+        <div class="section__body prose">
+          <p>
+            The load generator shared a laptop with the server, Postgres, and
+            Redis, so the numbers compare the checkers rather than predict
+            production. Each run also let the faster checker receive more
+            traffic. A fixed-rate test would compare latency more fairly.
+          </p>
+          <p>
+            Next: size the filter for growth rather than for today’s users,
+            and try a counting bloom filter so deleted accounts can free their
+            names.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built and written by Mustapha Adubiagbe, October 2026.</p>
+      <div class="site-footer__links">
+        <a href="/">Portfolio</a>
+        <a
+          href="https://github.com/jidemusty/bloom-usernames"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Source on GitHub</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

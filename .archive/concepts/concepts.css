@@ -1,0 +1,501 @@
+:root {
+  color-scheme: light;
+  --white: #fff;
+  --black: #000;
+  --gray: #666;
+  --light-gray: #ddd;
+  --page: 76rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.preview-note {
+  position: fixed;
+  z-index: 20;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid currentColor;
+  background: inherit;
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.preview-note:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.muted {
+  color: var(--gray);
+}
+
+/* Concept 1: Brief */
+
+.brief {
+  min-height: 100vh;
+}
+
+.brief__shell {
+  width: min(100% - 2.5rem, 46rem);
+  margin-inline: auto;
+  padding-block: 2rem 4rem;
+}
+
+.brief__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(6rem, 17vh, 11rem);
+  font-size: 0.85rem;
+}
+
+.brief__header > a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brief__header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.brief__intro {
+  margin-bottom: clamp(6rem, 15vh, 10rem);
+}
+
+.brief__intro h1 {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.07;
+}
+
+.brief__intro p {
+  max-width: 39rem;
+  margin: 0;
+  color: var(--gray);
+  font-size: 1.05rem;
+}
+
+.brief__section {
+  margin-top: 5rem;
+}
+
+.brief__section h2 {
+  margin: 0 0 1.5rem;
+  font-size: 0.8rem;
+}
+
+.brief__impact,
+.brief__projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brief__impact li,
+.brief__projects li {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--light-gray);
+}
+
+.brief__impact strong,
+.brief__projects a {
+  font-size: 0.9rem;
+}
+
+.brief__impact span,
+.brief__projects span {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.brief__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 7rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--black);
+  font-size: 0.85rem;
+}
+
+.brief__footer div {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Concept 2: Record */
+
+.record {
+  background: #f7f7f7;
+}
+
+.record__header,
+.record__main,
+.record__footer {
+  width: min(100%, var(--page));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.record__header {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--black);
+  font-size: 0.9rem;
+}
+
+.record__header > a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.record__header nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.record__intro {
+  display: grid;
+  min-height: 38rem;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: center;
+  border-bottom: 1px solid var(--black);
+}
+
+.record__intro-label {
+  align-self: start;
+  padding-top: 7rem;
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+.record__intro h1 {
+  max-width: 18ch;
+  margin: 0;
+  font-size: clamp(2.6rem, 6vw, 5.6rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.99;
+}
+
+.record__summary {
+  max-width: 38rem;
+  margin: 2rem 0 0;
+  color: var(--gray);
+  font-size: 1.05rem;
+}
+
+.record__section {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  padding-block: clamp(4rem, 8vw, 7rem);
+  border-bottom: 1px solid var(--black);
+}
+
+.record__section > h2 {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.record__items {
+  display: grid;
+  gap: 3.5rem;
+}
+
+.record__item {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.record__item time,
+.record__item > span {
+  color: var(--gray);
+  font-size: 0.82rem;
+}
+
+.record__item h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+}
+
+.record__item p {
+  max-width: 43rem;
+  margin: 0;
+  color: var(--gray);
+}
+
+.record__project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+}
+
+.record__footer {
+  display: flex;
+  min-height: 9rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.record__footer p {
+  margin: 0;
+}
+
+.record__footer div {
+  display: flex;
+  gap: 1.25rem;
+}
+
+/* Concept 3: Index */
+
+.index {
+  background: var(--black);
+  color: var(--white);
+}
+
+.index__hero {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  padding: 1.4rem var(--gutter) 0;
+  overflow: hidden;
+}
+
+.index__nav {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  color: #888;
+  font-size: 0.78rem;
+}
+
+.index__nav a {
+  color: var(--white);
+}
+
+.index__nav div:last-child {
+  text-align: right;
+}
+
+.index__statement {
+  max-width: 50rem;
+  margin: clamp(4rem, 10vh, 8rem) 0 2rem;
+  font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.index__name {
+  margin: auto -0.055em -0.12em;
+  font-size: clamp(5rem, 18vw, 19rem);
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 0.72;
+  white-space: nowrap;
+}
+
+.index__content {
+  background: var(--white);
+  color: var(--black);
+}
+
+.index__section {
+  display: grid;
+  width: min(100%, var(--page));
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  margin-inline: auto;
+  padding: clamp(4rem, 8vw, 7rem) var(--gutter);
+  border-bottom: 1px solid var(--black);
+}
+
+.index__section h2 {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.index__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.index__grid article {
+  border-top: 1px solid var(--black);
+  padding-top: 1rem;
+}
+
+.index__grid h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+}
+
+.index__grid p {
+  margin: 0;
+  color: var(--gray);
+}
+
+.index__projects {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--black);
+  list-style: none;
+}
+
+.index__projects li {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr) auto;
+  gap: 2rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.index__projects span {
+  color: var(--gray);
+}
+
+.index__projects a:last-child {
+  font-size: 0.8rem;
+}
+
+.index__footer {
+  display: flex;
+  width: min(100%, var(--page));
+  min-height: 10rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.index__footer p {
+  margin: 0;
+}
+
+.index__footer div {
+  display: flex;
+  gap: 1.25rem;
+}
+
+@media (max-width: 720px) {
+  .brief__header,
+  .brief__footer,
+  .record__header,
+  .record__footer,
+  .index__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .brief__impact li,
+  .brief__projects li,
+  .record__intro,
+  .record__section,
+  .record__item,
+  .index__section,
+  .index__projects li {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .brief__header {
+    margin-bottom: 6rem;
+  }
+
+  .record__header {
+    align-items: flex-start;
+    padding-block: 1rem;
+  }
+
+  .record__intro {
+    min-height: 0;
+    padding-block: 5rem;
+  }
+
+  .record__intro-label {
+    padding-top: 0;
+  }
+
+  .record__items {
+    gap: 3rem;
+  }
+
+  .index__nav {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .index__nav div:last-child {
+    text-align: left;
+  }
+
+  .index__statement {
+    margin-top: 5rem;
+  }
+
+  .index__name {
+    white-space: normal;
+  }
+
+  .index__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
